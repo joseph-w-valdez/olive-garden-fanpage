@@ -3,8 +3,15 @@ import logo from "./assets/images/logo.png"
 
 export default function Home() {
   return (
-    <section>
-      <Image className='w-full h-full' src={logo} alt="logo" />
+    <section className='bg-white'>
+      <div className='h-[calc(100vh-3rem)] w-full relative'>
+        <Image
+          layout="fill"
+          objectFit="contain"
+          src={logo}
+          alt="logo"
+        />
+      </div>
     </section>
   )
 }

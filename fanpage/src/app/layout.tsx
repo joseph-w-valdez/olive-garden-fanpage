@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <SideBar handleMenuToggle={handleMenuToggle} isOpen={isOpen} />
         <Navbar handleMenuToggle={handleMenuToggle} />
-        <main className='main-content'>{children}</main>
+        <main className='mt-12'>{children}</main>
       </body>
     </html>
   )

@@ -1,7 +1,13 @@
 import Image from 'next/image'
+import Spinner from '../components/spinner'
 
-export default function Home() {
+export default function RoulettePage() {
   return (
-    <main>this is the roulette page</main>
+    <>
+      <main>this is the roulette page</main>
+      <div className="container mx-auto">
+        <Spinner />
+      </div>
+    </>
   )
 }

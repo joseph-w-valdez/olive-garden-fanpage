@@ -10,7 +10,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ handleMenuToggle, isOpen }) => {
     return (
-        <div className={`w-full h-screen bg-[#f5ebe0] fixed z-20 top-0 transition-transform duration-300 ease-in text-center bg-contain bg-bottom bg-no-repeat ${isOpen ? '' : 'transform translate-x-full'}`}
+        <div className={`w-full h-screen bg-[#f5ebe0] fixed z-20 top-0 transition-transform duration-300 ease-in text-center bg-contain bg-bottom bg-no-repeat lg:hidden ${isOpen ? '' : 'transform translate-x-full'}`}
             style={{ backgroundImage: `url('https://clipart-library.com/images/ATbrg8nAc.png` }}>
             <FaTimes className="fixed top-0 right-0 mt-4 mr-4 text-2xl border border-black p-1 z-10" onClick={handleMenuToggle} />
             <div className="mt-40 fixed flex flex-col w-full lugra px-8">

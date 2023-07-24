@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Spinner from '../components/spinner'
+import Results from '../components/results'
 
 export default function RoulettePage() {
   return (
@@ -9,6 +10,7 @@ export default function RoulettePage() {
           <h1 className="text-7xl my-10">Savor The Unexpected</h1>
           <p className="text-3xl">Olive Garden&apos;s Roulette of Culinary Treasures</p>
         </div>
+        <Results />
       </div>
   )
 }

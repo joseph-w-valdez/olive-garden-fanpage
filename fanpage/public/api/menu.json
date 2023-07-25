@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Spaghetti with Meatballs",
+    "price": 12.99,
+    "image": "https://example.com/spaghetti.jpg",
+    "alt": "Spaghetti with Meatballs",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Classic spaghetti with meatballs in marinara sauce."
+  },
+  {
+    "name": "Chicken Alfredo",
+    "price": 14.99,
+    "image": "https://example.com/chicken_alfredo.jpg",
+    "alt": "Chicken Alfredo",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Grilled chicken breast on fettuccine pasta with creamy Alfredo sauce."
+  },
+  {
+    "name": "Lasagna Classico",
+    "price": 13.99,
+    "image": "https://example.com/lasagna.jpg",
+    "alt": "Lasagna Classico",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Layers of pasta, meat sauce, and three cheeses, baked to perfection."
+  },
+  {
+    "name": "Tour of Italy",
+    "price": 16.99,
+    "image": "https://example.com/tour_of_italy.jpg",
+    "alt": "Tour of Italy",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Homemade lasagna, chicken Parmigiana, and fettuccine Alfredo."
+  },
+  {
+    "name": "Fettuccine Alfredo",
+    "price": 11.99,
+    "image": "https://example.com/fettuccine_alfredo.jpg",
+    "alt": "Fettuccine Alfredo",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Fettuccine pasta tossed in a creamy Parmesan sauce."
+  },
+  {
+    "name": "Chicken Parmigiana",
+    "price": 13.49,
+    "image": "https://example.com/chicken_parmigiana.jpg",
+    "alt": "Chicken Parmigiana",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Crispy breaded chicken breast topped with marinara sauce and melted cheese."
+  },
+  {
+    "name": "Shrimp Scampi",
+    "price": 15.99,
+    "image": "https://example.com/shrimp_scampi.jpg",
+    "alt": "Shrimp Scampi",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Garlic shrimp saut�ed in a white wine sauce served over linguine."
+  },
+  {
+    "name": "Eggplant Parmigiana",
+    "price": 12.49,
+    "image": "https://example.com/eggplant_parmigiana.jpg",
+    "alt": "Eggplant Parmigiana",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Breaded eggplant fried and topped with marinara sauce and melted cheese."
+  },
+  {
+    "name": "Five Cheese Ziti al Forno",
+    "price": 11.99,
+    "image": "https://example.com/five_cheese_ziti.jpg",
+    "alt": "Five Cheese Ziti al Forno",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Ziti pasta baked with a blend of five cheeses and marinara sauce."
+  },
+  {
+    "name": "Tuscan Garlic Chicken",
+    "price": 15.99,
+    "image": "https://example.com/tuscan_garlic_chicken.jpg",
+    "alt": "Tuscan Garlic Chicken",
+    "type": "chicken",
+    "category": "entree",
+    "description": "Grilled chicken breast with roasted garlic, spinach, and sun-dried tomatoes in a creamy sauce."
+  },
+  {
+    "name": "Ravioli di Portobello",
+    "price": 13.99,
+    "image": "https://example.com/ravioli_portobello.jpg",
+    "alt": "Ravioli di Portobello",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Mushroom-filled ravioli in a creamy smoked cheese and sun-dried tomato sauce."
+  },
+  {
+    "name": "Stuffed Chicken Marsala",
+    "price": 15.49,
+    "image": "https://example.com/stuffed_chicken_marsala.jpg",
+    "alt": "Stuffed Chicken Marsala",
+    "type": "chicken",
+    "category": "entree",
+    "description": "Grilled chicken breasts stuffed with Italian cheeses and topped with mushrooms and a savory Marsala wine sauce."
+  }
+]

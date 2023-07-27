@@ -14,7 +14,7 @@ export default function Footer() {
             </p>
 
             <p>
-                For official information about Olive Garden, please visit their official website at <a href="https://www.olivegarden.com" className="font-bold text-green-700">www.olivegarden.com</a>.
+                For official information about Olive Garden, please visit their official website at <a href="https://www.olivegarden.com" target="_blank" rel="noopener noreferrer" className="font-bold text-green-700">www.olivegarden.com</a>.
             </p>
         </div >
     )

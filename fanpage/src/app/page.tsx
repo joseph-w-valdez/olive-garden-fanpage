@@ -7,19 +7,13 @@ import Footer from './components/footer'
 export default function Home() {
   return (
     <>
-      <section className="snap-start snap-always bg-white w-full h-full flex items-center justify-center text-8xl">
-        <Image className='w-full max-w-[950px] h-full' src={logo} alt="logo" />
+      <section className="bg-white w-full h-fit flex items-center justify-center text-8xl lg:snap-start lg:snap-always lg:w-full">
+        <Image className='w-3/4 lg:w-full max-w-[950px] lg:h-full' src={logo} alt="logo" />
       </section>
-      <section className="snap-start snap-always bg-amber-200 w-full  h-full flex justify-center text-8xl">
+      <section className="w-full h-fit pb-12 flex justify-center text-8xl lg:snap-start lg:snap-always lg:h-full lg:pb-0">
         <Welcome />
       </section>
-      <section className="snap-start snap-always bg-cyan-200 w-full h-full flex justify-center text-8xl">
-        <Welcome />
-      </section>
-      <section className="snap-start snap-always bg-fuchsia-200 w-full h-full flex justify-center text-8xl">
-        <Welcome />
-      </section>
-      <section className="snap-start snap-always">
+      <section className="lg:snap-start lg:snap-always ">
         <Footer />
       </section>
     </>

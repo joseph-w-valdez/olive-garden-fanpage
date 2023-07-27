@@ -10,7 +10,7 @@ export default function Home() {
       <section className="snap-start snap-always bg-white w-full h-full flex items-center justify-center text-8xl">
         <Image className='w-full max-w-[950px] h-full' src={logo} alt="logo" />
       </section>
-      {/* <section className="snap-start snap-always bg-amber-200 w-full  h-full flex justify-center text-8xl">
+      <section className="snap-start snap-always bg-amber-200 w-full  h-full flex justify-center text-8xl">
         <Welcome />
       </section>
       <section className="snap-start snap-always bg-cyan-200 w-full h-full flex justify-center text-8xl">
@@ -21,7 +21,7 @@ export default function Home() {
       </section>
       <section className="snap-start snap-always">
         <Footer />
-      </section> */}
+      </section>
     </>
   )
 }

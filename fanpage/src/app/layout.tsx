@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <SideBar handleMenuToggle={handleMenuToggle} isOpen={isOpen} />
         <Navbar handleMenuToggle={handleMenuToggle} />
-        <main className='mt-12 h-[calc(100vh-3rem)] snap-y snap-mandatory overflow-scroll'>{children}</main>
+        <main className='mt-12 h-[calc(100vh-3rem)] snap-y snap-mandatory overflow-y-scroll'>{children}</main>
       </body>
     </html>
   )

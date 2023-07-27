@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Inter } from 'next/font/google'
 import Navbar from './components/navbar'
 import SideBar from './components/sidebar'
+import Footer from './components/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,11 +27,11 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className=''>
       <body className={inter.className}>
         <SideBar handleMenuToggle={handleMenuToggle} isOpen={isOpen} />
         <Navbar handleMenuToggle={handleMenuToggle} />
-        <main className='mt-12'>{children}</main>
+        <main className='mt-12 h-[calc(100vh-3rem)] snap-y snap-mandatory overflow-scroll'>{children}</main>
       </body>
     </html>
   )

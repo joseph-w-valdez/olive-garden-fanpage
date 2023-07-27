@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <div className="w-full bg-[#F4BE69] text-start text-sm mt-10 py-5 px-3">
+        <div className="w-full bg-[#F4BE69] text-start text-sm py-5 px-3">
             <p className="pb-2"><b>Disclaimer:</b> This website is an unofficial Olive Garden fan page.
                 It is not affiliated with or endorsed by Olive Garden or its parent company.
             </p>

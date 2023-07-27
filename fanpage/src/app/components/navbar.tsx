@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ handleMenuToggle }) => {
             </Link>
             <div className="lugra hidden lg:w-1/2 lg:flex lg:justify-evenly">
                 {links.map((link, index) => (
-                    <Link href={link.href}><span>{link.name}</span></Link>
+                    <Link href={link.href} key={index}><span>{link.name}</span></Link>
                 ))}
             </div>
             <RxHamburgerMenu className="ml-8 border border-black text-2xl p-1 rounded-md lg:hidden" onClick={handleMenuToggle} />

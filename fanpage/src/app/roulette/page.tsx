@@ -42,7 +42,7 @@ export default function RoulettePage() {
       }
     }
     fetchData();
-  }, []);
+  }, []); 
 
 
   return (

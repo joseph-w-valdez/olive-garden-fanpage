@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Breadsticks from "../assets/images/breadsticks.png"
 
+
+
 export default function Results(){
     return(
         <section className="w-full h-[100vh] bg-[#DDBEA9] text-black flex flex-col justify-center items-center text-left">

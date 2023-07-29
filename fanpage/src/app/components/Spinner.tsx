@@ -4,20 +4,13 @@ import Image from "next/image";
 import WaiterBackground from '../assets/images/waiter-background-spinner.png'
 import DishLid from '../assets/images/waiter-lid-spinner.png'
 import { shuffleArray } from "../utilities/shuffle";
+import { useRandomItem } from "../contexts/SpinnerResultContext";
 import axios from "axios";
-
-interface MenuItem {
-    alt: string;
-    category: string;
-    description: string;
-    image: string;
-    name: string;
-    price: number;
-    type: string;
-  }
+import { MenuItem } from "../types/MenuItem";
 
 export default function Spinner(){
     const [items, setItems] = useState<MenuItem[]>([]);
+    const { setRandomItem } = useRandomItem();
 
     const fetchTenItems = async () => {
         try {
@@ -29,10 +22,11 @@ export default function Spinner(){
         }
       };
 
-    useEffect(() => {
+     useEffect(() => {
         if (items.length > 0) {
-            const randomItem = shuffleArray(items).slice(0, 1);
-            console.log('spin2win item', randomItem)
+            const resultedItem = shuffleArray(items).slice(0, 1)[0];
+            console.log('spin2win item', resultedItem);
+            setRandomItem(resultedItem);
         }
     }, [items]);
 

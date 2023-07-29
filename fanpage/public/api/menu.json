@@ -1,110 +1,110 @@
 [
   {
-    "name": "Spaghetti with Meatballs",
-    "price": 12.99,
-    "image": "https://example.com/spaghetti.jpg",
-    "alt": "Spaghetti with Meatballs",
+    "name": "Chicken with Shrimp Carbonara",
+    "price": 22.49,
+    "image": "https://media.olivegarden.com/en_us/images/product/chicken-and-shrimp-carbonara-dpv-590x365.jpg",
+    "alt": "Chicken with Shrimp Carbonara",
     "type": "pasta",
     "category": "entree",
-    "description": "Classic spaghetti with meatballs in marinara sauce."
+    "description": "Grilled chicken and succulent shrimp served with carbonara sauce over spaghetti."
   },
   {
     "name": "Chicken Alfredo",
-    "price": 14.99,
-    "image": "https://example.com/chicken_alfredo.jpg",
+    "price": 20.99,
+    "image": "https://media.olivegarden.com/en_us/images/product/classic-chicken-alfredo-dinner-dpv-590x365.jpg",
     "alt": "Chicken Alfredo",
     "type": "pasta",
     "category": "entree",
-    "description": "Grilled chicken breast on fettuccine pasta with creamy Alfredo sauce."
-  },
-  {
-    "name": "Lasagna Classico",
-    "price": 13.99,
-    "image": "https://example.com/lasagna.jpg",
-    "alt": "Lasagna Classico",
-    "type": "pasta",
-    "category": "entree",
-    "description": "Layers of pasta, meat sauce, and three cheeses, baked to perfection."
-  },
-  {
-    "name": "Tour of Italy",
-    "price": 16.99,
-    "image": "https://example.com/tour_of_italy.jpg",
-    "alt": "Tour of Italy",
-    "type": "pasta",
-    "category": "entree",
-    "description": "Homemade lasagna, chicken Parmigiana, and fettuccine Alfredo."
-  },
-  {
-    "name": "Fettuccine Alfredo",
-    "price": 11.99,
-    "image": "https://example.com/fettuccine_alfredo.jpg",
-    "alt": "Fettuccine Alfredo",
-    "type": "pasta",
-    "category": "entree",
-    "description": "Fettuccine pasta tossed in a creamy Parmesan sauce."
+    "description": "Creamy Alfredo sauce smothered over tender grilled chicken breast and fettuccine pasta."
   },
   {
     "name": "Chicken Parmigiana",
-    "price": 13.49,
-    "image": "https://example.com/chicken_parmigiana.jpg",
+    "price": 20.79,
+    "image": "https://media.olivegarden.com/en_us/images/product/dinner-chicken-parm-dpv-590x365.jpg",
     "alt": "Chicken Parmigiana",
     "type": "pasta",
     "category": "entree",
-    "description": "Crispy breaded chicken breast topped with marinara sauce and melted cheese."
+    "description": "Crispy breaded chicken cutlet with marinara sauce and a trio of melted cheeses."
   },
   {
-    "name": "Shrimp Scampi",
-    "price": 15.99,
-    "image": "https://example.com/shrimp_scampi.jpg",
-    "alt": "Shrimp Scampi",
+    "name": "Tour of Italy",
+    "price": 21.99,
+    "image": "https://media.olivegarden.com/en_us/images/product/Tour-of-Italy-gv-590X365.jpg",
+    "alt": "Tour of Italy",
     "type": "pasta",
     "category": "entree",
-    "description": "Garlic shrimp saut�ed in a white wine sauce served over linguine."
+    "description": "Embark on a culinary journey with homemade lasagna, chicken Parmigiana, and fettuccine Alfredo."
   },
   {
-    "name": "Eggplant Parmigiana",
-    "price": 12.49,
-    "image": "https://example.com/eggplant_parmigiana.jpg",
-    "alt": "Eggplant Parmigiana",
+    "name": "Shrimp Alfredo",
+    "price": 21.99,
+    "image": "https://media.olivegarden.com/en_us/images/marketing/Shrimp-Alfredo-gv-590x365.jpg",
+    "alt": "Shrimp Alfredo",
     "type": "pasta",
     "category": "entree",
-    "description": "Breaded eggplant fried and topped with marinara sauce and melted cheese."
+    "description": "Tender shrimp nestled in a bed of fettuccine pasta, bathed in a rich and creamy Parmesan sauce."
   },
   {
-    "name": "Five Cheese Ziti al Forno",
-    "price": 11.99,
-    "image": "https://example.com/five_cheese_ziti.jpg",
-    "alt": "Five Cheese Ziti al Forno",
+    "name": "Chicken Marsala Fettuccine",
+    "price": 21.29,
+    "image": "https://media.olivegarden.com/en_us/images/marketing/Creamy-marsala-chicken-gv-590x365.jpg",
+    "alt": "Chicken Marsala Fettuccine",
     "type": "pasta",
     "category": "entree",
-    "description": "Ziti pasta baked with a blend of five cheeses and marinara sauce."
+    "description": "Crispy breaded chicken breast crowned with marsala sauce and melted cheese, served over fettuccine."
   },
   {
-    "name": "Tuscan Garlic Chicken",
-    "price": 15.99,
-    "image": "https://example.com/tuscan_garlic_chicken.jpg",
-    "alt": "Tuscan Garlic Chicken",
-    "type": "chicken",
+    "name": "Ravioli Carbonara",
+    "price": 18.79,
+    "image": "https://media.olivegarden.com/en_us/images/marketing/Ravioli-Carbonara-gv-590x365.jpg",
+    "alt": "Ravioli Carbonara",
+    "type": "pasta",
     "category": "entree",
-    "description": "Grilled chicken breast with roasted garlic, spinach, and sun-dried tomatoes in a creamy sauce."
+    "description": "Delicious garlic shrimp sautéed in a white wine sauce, served over linguine."
   },
   {
-    "name": "Ravioli di Portobello",
+    "name": "Lasagna Classico",
+    "price": 19.79,
+    "image": "https://media.olivegarden.com/en_us/images/product/lasagna-classico-gv-590x365.png",
+    "alt": "Lasagna Classico",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Indulge in layers of pasta, savory meat sauce, and three types of melted cheese, baked to perfection."
+  },
+  {
+    "name": "Spaghetti & Meatballs",
+    "price": 17.98,
+    "image": "https://media.olivegarden.com/en_us/images/product/Spaghetti-meatballs-gv-590x365.jpg",
+    "alt": "Spaghetti & Meatballs",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Traditional spaghetti served with mouthwatering meatballs, topped with a blend of five cheeses and marinara sauce."
+  },
+  {
+    "name": "Spaghetti with Meat Sauce",
     "price": 13.99,
-    "image": "https://example.com/ravioli_portobello.jpg",
-    "alt": "Ravioli di Portobello",
-    "type": "pasta",
-    "category": "entree",
-    "description": "Mushroom-filled ravioli in a creamy smoked cheese and sun-dried tomato sauce."
-  },
-  {
-    "name": "Stuffed Chicken Marsala",
-    "price": 15.49,
-    "image": "https://example.com/stuffed_chicken_marsala.jpg",
-    "alt": "Stuffed Chicken Marsala",
+    "image": "https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Meat_Sauce_590x265.jpg",
+    "alt": "Spaghetti with Meat Sauce",
     "type": "chicken",
     "category": "entree",
-    "description": "Grilled chicken breasts stuffed with Italian cheeses and topped with mushrooms and a savory Marsala wine sauce."
+    "description": "Grilled chicken breast seasoned with roasted garlic, accompanied by spinach and sun-dried tomatoes in a creamy sauce."
+  },
+  {
+    "name": "Spaghetti with Marinara",
+    "price": 13.99,
+    "image": "https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Marinara_590x265.jpg",
+    "alt": "Spaghetti with Marinara",
+    "type": "pasta",
+    "category": "entree",
+    "description": "Savor the taste of mushroom-filled ravioli drizzled in a creamy smoked cheese and sun-dried tomato sauce."
+  },
+  {
+    "name": "Chicken Tortelloni Alfredo",
+    "price": 23.49,
+    "image": "https://media.olivegarden.com/en_us/images/product/asiago-tortelloni-alfredo-with-grilled-chicken-gv-590x365.png",
+    "alt": "Chicken Tortelloni Alfredo",
+    "type": "chicken",
+    "category": "entree",
+    "description": "Grilled chicken breasts generously filled with a medley of Italian cheeses and crowned with mushrooms, all enveloped in a savory Marsala wine sauce."
   }
 ]

@@ -1,13 +1,13 @@
+'use client'
 import Link from "next/link"
 import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
 import links from "../data/links"
+import { useSidebarContext } from "../contexts/sidebarContext";
 
-interface NavbarProps {
-    handleMenuToggle: () => void;
-}
+const Navbar: React.FC = () => {
+    const { handleMenuToggle } = useSidebarContext()
 
-const Navbar: React.FC<NavbarProps> = ({ handleMenuToggle }) => {
     return (
         <nav className='w-full bg-[#F4BE69] h-12 flex justify-center items-center fixed top-0 z-10'>
             <Link href="/" className='text-black lora w-3/4 text-center pl-16 md:text-xl lg:text-start lg:pl-10'>

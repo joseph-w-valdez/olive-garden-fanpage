@@ -1,14 +1,12 @@
-import { link } from "fs";
+'use client'
 import Link from "next/link"
 import { FaTimes } from 'react-icons/fa';
 import links from "../data/links";
+import { useSidebarContext } from "../contexts/sidebarContext";
 
-interface SidebarProps {
-    handleMenuToggle: () => void;
-    isOpen: boolean
-}
+const Sidebar: React.FC = () => {
+    const { isOpen, handleMenuToggle } = useSidebarContext()
 
-const Sidebar: React.FC<SidebarProps> = ({ handleMenuToggle, isOpen }) => {
     return (
         <div className={`w-full h-screen bg-[#f5ebe0] fixed z-20 top-0 transition-transform duration-300 ease-in text-center bg-contain bg-bottom bg-no-repeat lg:hidden ${isOpen ? '' : 'transform translate-x-full'}`}
             style={{ backgroundImage: `url('https://clipart-library.com/images/ATbrg8nAc.png` }}>

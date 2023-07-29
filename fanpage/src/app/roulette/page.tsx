@@ -37,12 +37,10 @@ export default function RoulettePage() {
         setMenu(menuData)
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        console.log('menu state', menu)
       }
     }
     fetchData();
-  }, []); 
+  }, []);
 
 
   return (

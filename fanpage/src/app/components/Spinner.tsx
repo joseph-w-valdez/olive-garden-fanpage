@@ -7,10 +7,12 @@ import { shuffleArray } from "../utilities/shuffle";
 import { useRandomItem } from "../contexts/SpinnerResultContext";
 import axios from "axios";
 import { MenuItem } from "../types/MenuItem";
+import { useRouter } from "next/navigation";
 
 export default function Spinner(){
     const [items, setItems] = useState<MenuItem[]>([]);
     const { setRandomItem } = useRandomItem();
+    const router = useRouter()
 
     const fetchTenItems = async () => {
         try {
@@ -22,11 +24,12 @@ export default function Spinner(){
         }
       };
 
+
      useEffect(() => {
         if (items.length > 0) {
             const resultedItem = shuffleArray(items).slice(0, 1)[0];
-            console.log('spin2win item', resultedItem);
             setRandomItem(resultedItem);
+            router.push('#spinner-result')
         }
     }, [items]);
 

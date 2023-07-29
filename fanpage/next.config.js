@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = {
+const nextConfig = {
   images: {
-    domains: ["media.olivegarden.com"],
-    loader: "default",
+    domains: ['media.olivegarden.com'],
   },
-};
+}
+
+module.exports = nextConfig

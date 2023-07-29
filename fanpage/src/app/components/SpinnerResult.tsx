@@ -7,7 +7,7 @@ export default function Results(){
      const { randomItem } = useRandomItem();
 
     return(
-        <section className="w-full h-[100vh] bg-[#DDBEA9] text-black flex flex-col justify-center items-center text-left">
+        <section className="w-full h-[100vh] bg-[#DDBEA9] text-black flex flex-col justify-center items-center text-left" id="spinner-result">
             <div className="text-left">
                 {randomItem && (
                     <>

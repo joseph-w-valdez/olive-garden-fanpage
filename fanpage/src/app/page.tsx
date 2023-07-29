@@ -1,8 +1,7 @@
-"use client"
 import Image from 'next/image'
 import logo from "./assets/images/logo.png"
-import Welcome from './components/welcome'
-import Footer from './components/footer'
+import Welcome from './components/Welcome'
+import Footer from './components/Footer'
 
 export default function Home() {
   return (

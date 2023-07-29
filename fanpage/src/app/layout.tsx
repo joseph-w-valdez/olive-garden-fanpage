@@ -3,9 +3,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { useState } from 'react'
 import { Inter } from 'next/font/google'
-import Navbar from './components/navbar'
-import SideBar from './components/sidebar'
-import Footer from './components/footer'
+import Navbar from './components/Navbar'
+import SideBar from './components/Sidebar'
+import Footer from './components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 

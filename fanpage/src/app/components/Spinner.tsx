@@ -14,7 +14,7 @@ import RouletteBar from "./RouletteBar";
 export default function Spinner() {
     const [items, setItems] = useState<MenuItem[]>([]);
     const [lidCovered, setLidCovered] = useState(true);
-    const { setRandomItem } = useRandomItem();
+    const { randomItem, setRandomItem } = useRandomItem();
     const backgroundRef = useRef<HTMLImageElement>(null);
     const router = useRouter();
 
@@ -66,7 +66,7 @@ export default function Spinner() {
                     objectFit="cover"
                     alt="Dish Lid"
                 />
-                <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} />
+                <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} selectedItem={randomItem} />
             </div>
             <button
                 className="absolute text-xl bottom-[10%] py-3 px-5 btn bg-black bg-opacity-50 border-4 border-white hover:bg-opacity-75 shadow-md text-white font-extrabold rounded"

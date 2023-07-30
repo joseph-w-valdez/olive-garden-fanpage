@@ -33,16 +33,64 @@ body {
 
 @keyframes fadeIn {
   to {
-    opacity: 0.5;
-    height: 30%;
+    opacity: 1;
+    height: 25%;
     transform: translateY(-50%);
   }
 }
 
 @keyframes fadeOut {
   from {
+    opacity: 1;
+    height: 25%;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 0;
+    height: 0;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fadeInTitle {
+  from {
+    opacity: 0;
+    height: 0%;
+    transform: translateY(0%);
+  }
+  to {
     opacity: 0.5;
-    height: 30%;
+    height: 27%;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fadeOutTitle {
+  from {
+    opacity: 0.5;
+    height: 25%;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 0;
+    height: 0;
+    transform: translateY(0%);
+  }
+}
+
+
+@keyframes fadeInBackground {
+  to {
+    opacity: 0.5;
+    height: 27%;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fadeOutBackground {
+  from {
+    opacity: 0.5;
+    height: 27%;
     transform: translateY(-50%);
   }
   to {

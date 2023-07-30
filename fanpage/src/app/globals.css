@@ -34,7 +34,7 @@ body {
 @keyframes fadeIn {
   to {
     opacity: 0.5;
-    height: 18rem;
+    height: 30%;
     transform: translateY(-50%);
   }
 }
@@ -42,7 +42,7 @@ body {
 @keyframes fadeOut {
   from {
     opacity: 0.5;
-    height: 18rem;
+    height: 30%;
     transform: translateY(-50%);
   }
   to {

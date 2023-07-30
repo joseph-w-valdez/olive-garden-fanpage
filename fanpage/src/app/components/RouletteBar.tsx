@@ -9,7 +9,7 @@ interface RouletteBarProps {
 const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation }) => {
   const animationClass = fadeAnimation
 
-  return <div className={`w-full h-0 absolute top-[210px] bg-black opacity-0 transition duration-150 ease-linear ${animationClass}`}></div>;
+  return <div className={`w-full h-0 absolute top-[25%] bg-black opacity-0 transition duration-150 ease-linear ${animationClass}`}></div>;
 };
 
 export default RouletteBar;

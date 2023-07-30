@@ -69,11 +69,11 @@ export default function Spinner() {
                 <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} selectedItem={randomItem} />
             </div>
             <button
-                className="absolute text-xl bottom-[10%] py-3 px-5 btn bg-black bg-opacity-50 border-4 border-white hover:bg-opacity-75 shadow-md text-white font-extrabold rounded"
+                className="absolute text-xl bottom-[10%] py-3 px-5 btn bg-black bg-opacity-50 border-4 border-white hover:bg-opacity-75 shadow-xl text-white font-extrabold rounded transition-transform transform-gpu active:translate-y-4 active:shadow-md"
                 onClick={fetchRandomItems}
-            >
+                >
                 SPIN
-            </button>
+                </button>
             <div className="absolute text-center bottom-[10%] right-[5rem] text-black hidden lg:block">
                 <h1 className="text-2xl">Savor The Unexpected</h1>
                 <p className="text-base">Olive Garden&apos;s Roulette of Culinary Treasures</p>

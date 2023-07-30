@@ -83,7 +83,7 @@
   {
     "name": "Spaghetti with Meat Sauce",
     "price": 13.99,
-    "image": "/assets/images/spaghetti-and-meat-sauce.webp",
+    "image": "/assets/images/spaghetti-with-meat-sauce.webp",
     "alt": "Spaghetti with Meat Sauce",
     "type": "chicken",
     "category": "entree",

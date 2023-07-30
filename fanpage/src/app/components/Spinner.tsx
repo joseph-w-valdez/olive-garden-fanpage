@@ -53,13 +53,13 @@ export default function Spinner() {
         setTimeout(() => {
           router.push("#spinner-result");
           isScrolling = false;
-        }, 2000);
+        }, 5000);
       } else {
         moveLidUp(backgroundRef, setLidCovered);
         setTimeout(() => {
           router.push("#spinner-result");
           isScrolling = false;
-        }, 2000);
+        }, 5000);
       }
       setRandomMenuItem();
     }

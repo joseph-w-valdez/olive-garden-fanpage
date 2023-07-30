@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MenuItem } from '../types/MenuItem';
 
@@ -11,21 +12,23 @@ interface RouletteBarProps {
 }
 
 const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selectedItem }) => {
+  const [duplicatedItems, setDuplicatedItems] = useState<MenuItem[]>([]);
   const barAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-background-in' : 'animate-background-out'
   const titleAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-title-in' : 'animate-title-out'
+  const conveyorAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-conveyor-belt' : ''
+
+  useEffect(() => {
+    setDuplicatedItems([...items, ...items]);
+  }, [items]);
 
   return (
     <>
       <div className={`w-full h-0 absolute top-[25%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
       <div className={`w-full h-0 absolute top-[25%] opacity-0 transition duration-150 ease-linear ${fadeAnimation} flex `}>
-        {items.map((item, index)=> (
+        {duplicatedItems.map((item, index)=> (
             <Image
-              key={index}
-              src={item.image}
-              alt={item.alt}
-              width={200}
-              height={200}
-              className={`mx-4 my-6`}
+              key={index} src={item.image} alt={item.alt} width={200} height={200}
+              className={`mx-4 my-6 ${conveyorAnimation}`}
             />
           ))}
       </div>

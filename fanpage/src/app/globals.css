@@ -82,7 +82,7 @@ body {
 @keyframes fadeInBackground {
   to {
     opacity: 0.5;
-    height: 27%;
+    height: 30%;
     transform: translateY(-50%);
   }
 }
@@ -90,12 +90,21 @@ body {
 @keyframes fadeOutBackground {
   from {
     opacity: 0.5;
-    height: 27%;
+    height: 30%;
     transform: translateY(-50%);
   }
   to {
     opacity: 0;
     height: 0;
     transform: translateY(-50%);
+  }
+}
+
+@keyframes conveyorBelt {
+   0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2600px);
   }
 }

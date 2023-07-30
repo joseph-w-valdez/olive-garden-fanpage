@@ -66,7 +66,7 @@ export default function Spinner() {
                     objectFit="cover"
                     alt="Dish Lid"
                 />
-                <RouletteBar fadeIn={lidCovered}/>
+                <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} />
             </div>
             <button
                 className="absolute text-xl bottom-[5rem] py-3 px-5 btn bg-black bg-opacity-50 border-4 border-white hover:bg-opacity-75 shadow-md text-white font-extrabold rounded"

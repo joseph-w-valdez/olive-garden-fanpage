@@ -30,3 +30,24 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@keyframes fadeIn {
+  to {
+    opacity: 0.5;
+    height: 18rem;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 0.5;
+    height: 18rem;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 0;
+    height: 0;
+    transform: translateY(-50%);
+  }
+}

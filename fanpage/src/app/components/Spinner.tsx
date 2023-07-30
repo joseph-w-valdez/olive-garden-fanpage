@@ -9,6 +9,7 @@ import { shuffleArray } from "../utilities/shuffle";
 import { moveLidUp, moveLidDown } from "../utilities/lidAnimations";
 import { useRandomItem } from "../contexts/SpinnerResultContext";
 import { useRouter } from "next/navigation";
+import RouletteBar from "./RouletteBar";
 
 export default function Spinner() {
     const [items, setItems] = useState<MenuItem[]>([]);
@@ -39,10 +40,10 @@ export default function Spinner() {
             if (!lidCovered) {
                 moveLidDown(backgroundRef, setLidCovered);
                 setTimeout(() => moveLidUp(backgroundRef, setLidCovered), 800);
-                setTimeout(() => router.push("#spinner-result"), 1500);
+                setTimeout(() => router.push("#spinner-result"), 2000);
             } else {
                 moveLidUp(backgroundRef, setLidCovered);
-                setTimeout(() => router.push("#spinner-result"), 800);
+                setTimeout(() => router.push("#spinner-result"), 2000);
             }
 
             setRandomMenuItem();
@@ -65,6 +66,7 @@ export default function Spinner() {
                     objectFit="cover"
                     alt="Dish Lid"
                 />
+                <RouletteBar fadeIn={lidCovered}/>
             </div>
             <button
                 className="absolute text-xl bottom-[5rem] py-3 px-5 btn bg-black bg-opacity-50 border-4 border-white hover:bg-opacity-75 shadow-md text-white font-extrabold rounded"

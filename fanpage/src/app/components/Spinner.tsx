@@ -1,22 +1,23 @@
 'use client'
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import WaiterBackground from '../assets/images/waiter-background-spinner.png'
-import DishLid from '../assets/images/waiter-lid-spinner.png'
-import { shuffleArray } from "../utilities/shuffle";
-import { useRandomItem } from "../contexts/SpinnerResultContext";
+import WaiterBackground from '../assets/images/waiter-background-spinner.png';
+import DishLid from '../assets/images/waiter-lid-spinner.png';
 import axios from "axios";
 import { MenuItem } from "../types/MenuItem";
+import { shuffleArray } from "../utilities/shuffle";
+import { moveLidUp, moveLidDown } from "../utilities/lidAnimations";
+import { useRandomItem } from "../contexts/SpinnerResultContext";
 import { useRouter } from "next/navigation";
 
 export default function Spinner() {
     const [items, setItems] = useState<MenuItem[]>([]);
     const [lidCovered, setLidCovered] = useState(true);
     const { setRandomItem } = useRandomItem();
-    const router = useRouter();
     const backgroundRef = useRef<HTMLImageElement>(null);
+    const router = useRouter();
 
-    const fetchTenItems = async () => {
+    const fetchRandomItems = async () => {
         try {
             const response = await axios.get("/api/menu.json");
             const randomItems = shuffleArray(response.data as MenuItem[]).slice(0, 10);
@@ -26,42 +27,25 @@ export default function Spinner() {
         }
     };
 
-    useEffect(() => {
+    const setRandomMenuItem = () => {
         if (items && items.length > 0) {
             const resultedItem = shuffleArray(items).slice(0, 1)[0];
             setRandomItem(resultedItem);
         }
-    }, [items, setRandomItem]);
+    };
 
     useEffect(() => {
         if (items && items.length > 0) {
-            const moveLidUp = () => {
-                if (backgroundRef.current) {
-                    backgroundRef.current.style.transition = "transform 500ms ease-in";
-                    backgroundRef.current.style.transform = "translateY(-200px)";
-                    setLidCovered(false);
-                    setTimeout(() => {
-                        router.push('#spinner-result');
-                    }, 1200);
-                }
-            };
-
-            const moveLidDown = () => {
-                if (backgroundRef.current) {
-                    backgroundRef.current.style.transition = "transform 500ms ease-in";
-                    backgroundRef.current.style.transform = "translateY(0)";
-                    setLidCovered(true);
-                }
-            };
-
             if (!lidCovered) {
-                moveLidDown();
-                setTimeout(moveLidUp, 800);  // waits for the lid to cover before moving it up again
+                moveLidDown(backgroundRef, setLidCovered);
+                setTimeout(() => moveLidUp(backgroundRef, setLidCovered), 800);
+                setTimeout(() => router.push("#spinner-result"), 1500);
             } else {
-                moveLidUp();
+                moveLidUp(backgroundRef, setLidCovered);
+                setTimeout(() => router.push("#spinner-result"), 800);
             }
-            const resultedItem = shuffleArray(items).slice(0, 1)[0];
-            setRandomItem(resultedItem);
+
+            setRandomMenuItem();
         }
     }, [items]);
 
@@ -84,7 +68,7 @@ export default function Spinner() {
             </div>
             <button
                 className="absolute text-xl bottom-[5rem] py-3 px-5 btn bg-black bg-opacity-50 border-4 border-white hover:bg-opacity-75 shadow-md text-white font-extrabold rounded"
-                onClick={fetchTenItems}
+                onClick={fetchRandomItems}
             >
                 SPIN
             </button>

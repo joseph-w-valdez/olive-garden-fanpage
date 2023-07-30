@@ -14,6 +14,7 @@ import RouletteBar from "./RouletteBar";
 export default function Spinner() {
     const [items, setItems] = useState<MenuItem[]>([]);
     const [lidCovered, setLidCovered] = useState(true);
+    const [isWaiting, setIsWaiting] = useState(false);
     const { randomItem, setRandomItem } = useRandomItem();
     const backgroundRef = useRef<HTMLImageElement>(null);
     const router = useRouter();
@@ -36,19 +37,59 @@ export default function Spinner() {
     };
 
     useEffect(() => {
-        if (items && items.length > 0) {
-            if (!lidCovered) {
-                moveLidDown(backgroundRef, setLidCovered);
-                setTimeout(() => moveLidUp(backgroundRef, setLidCovered), 800);
-                setTimeout(() => router.push("#spinner-result"), 2000);
-            } else {
-                moveLidUp(backgroundRef, setLidCovered);
-                setTimeout(() => router.push("#spinner-result"), 2000);
-            }
+    let isScrolling = false;
 
-            setRandomMenuItem();
+    const handleScroll = () => {
+      if (!isScrolling) {
+        setIsWaiting(false);
+        isScrolling = true;
+      }
+    };
+
+    if (items && items.length > 0) {
+      if (!lidCovered) {
+        moveLidDown(backgroundRef, setLidCovered);
+        setTimeout(() => moveLidUp(backgroundRef, setLidCovered), 800);
+        setTimeout(() => {
+          router.push("#spinner-result");
+          isScrolling = false;
+        }, 2000);
+      } else {
+        moveLidUp(backgroundRef, setLidCovered);
+        setTimeout(() => {
+          router.push("#spinner-result");
+          isScrolling = false;
+        }, 2000);
+      }
+      setRandomMenuItem();
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [items]);
+
+    const handleButtonClick = () => {
+        if (!isWaiting) {
+        setIsWaiting(true);
+        fetchRandomItems();
         }
-    }, [items]);
+    };
+
+    const buttonClassNames = {
+    base: "absolute text-xl bottom-[10%] py-3 px-5 btn",
+    background: isWaiting ? "bg-red-500 cursor-not-allowed" : "bg-black bg-opacity-50",
+    border: "border-4 border-gray-300 rounded",
+    hover: isWaiting ? "hover:bg-red-500" : "hover:bg-opacity-75",
+    text: "text-white font-extrabold",
+    pointerEvents: isWaiting ? "pointer-events-none" : "pointer-events-auto",
+    activeBackground: isWaiting ? "active:bg-red-500" : "active:bg-opacity-75",
+    shadow: "shadow-xl",
+    activeTranslate: isWaiting ? "active:translate-y-0" : "active:translate-y-2",
+    activeShadow: "active:shadow-md",
+  };
 
     return (
         <section className="relative flex flex-wrap justify-center items-center">
@@ -68,12 +109,13 @@ export default function Spinner() {
                 />
                 <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} selectedItem={randomItem} />
             </div>
-            <button
-                className="absolute text-xl bottom-[10%] py-3 px-5 btn bg-black bg-opacity-50 border-4 border-white hover:bg-opacity-75 shadow-xl text-white font-extrabold rounded transition-transform transform-gpu active:translate-y-4 active:shadow-md"
-                onClick={fetchRandomItems}
-                >
-                SPIN
-                </button>
+             <button
+                className={`${buttonClassNames.base} ${buttonClassNames.background} ${buttonClassNames.border} ${buttonClassNames.hover} ${buttonClassNames.text} ${buttonClassNames.opacity} ${buttonClassNames.pointerEvents} ${buttonClassNames.activeBackground} ${buttonClassNames.shadow} ${buttonClassNames.textOpacity} ${buttonClassNames.activeTranslate} ${buttonClassNames.activeShadow}`}
+                onClick={handleButtonClick}
+                disabled={isWaiting}
+            >
+                {isWaiting ? "WAIT" : "SPIN"}
+            </button>
             <div className="absolute text-center bottom-[10%] right-[5rem] text-black hidden lg:block">
                 <h1 className="text-2xl">Savor The Unexpected</h1>
                 <p className="text-base">Olive Garden&apos;s Roulette of Culinary Treasures</p>

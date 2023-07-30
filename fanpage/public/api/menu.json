@@ -2,7 +2,7 @@
   {
     "name": "Chicken with Shrimp Carbonara",
     "price": 22.49,
-    "image": "https://media.olivegarden.com/en_us/images/product/chicken-and-shrimp-carbonara-dpv-590x365.jpg",
+    "image": "/assets/images/chicken-with-shrimp-carbonara.webp",
     "alt": "Chicken with Shrimp Carbonara",
     "type": "pasta",
     "category": "entree",
@@ -11,7 +11,7 @@
   {
     "name": "Chicken Alfredo",
     "price": 20.99,
-    "image": "https://media.olivegarden.com/en_us/images/product/classic-chicken-alfredo-dinner-dpv-590x365.jpg",
+    "image": "/assets/images/chicken-alfredo.webp",
     "alt": "Chicken Alfredo",
     "type": "pasta",
     "category": "entree",
@@ -20,7 +20,7 @@
   {
     "name": "Chicken Parmigiana",
     "price": 20.79,
-    "image": "https://media.olivegarden.com/en_us/images/product/dinner-chicken-parm-dpv-590x365.jpg",
+    "image": "/assets/images/chicken-parmigiana.webp",
     "alt": "Chicken Parmigiana",
     "type": "pasta",
     "category": "entree",
@@ -29,7 +29,7 @@
   {
     "name": "Tour of Italy",
     "price": 21.99,
-    "image": "https://media.olivegarden.com/en_us/images/product/Tour-of-Italy-gv-590X365.jpg",
+    "image": "/assets/images/tour-of-italy.webp",
     "alt": "Tour of Italy",
     "type": "pasta",
     "category": "entree",
@@ -38,7 +38,7 @@
   {
     "name": "Shrimp Alfredo",
     "price": 21.99,
-    "image": "https://media.olivegarden.com/en_us/images/marketing/Shrimp-Alfredo-gv-590x365.jpg",
+    "image": "/assets/images/shrimp-alfredo.webp",
     "alt": "Shrimp Alfredo",
     "type": "pasta",
     "category": "entree",
@@ -47,7 +47,7 @@
   {
     "name": "Chicken Marsala Fettuccine",
     "price": 21.29,
-    "image": "https://media.olivegarden.com/en_us/images/marketing/Creamy-marsala-chicken-gv-590x365.jpg",
+    "image": "/assets/images/chicken-marsala-fettuccine.webp",
     "alt": "Chicken Marsala Fettuccine",
     "type": "pasta",
     "category": "entree",
@@ -56,7 +56,7 @@
   {
     "name": "Ravioli Carbonara",
     "price": 18.79,
-    "image": "https://media.olivegarden.com/en_us/images/marketing/Ravioli-Carbonara-gv-590x365.jpg",
+    "image": "/assets/images/ravioli-carbonara.webp",
     "alt": "Ravioli Carbonara",
     "type": "pasta",
     "category": "entree",
@@ -65,7 +65,7 @@
   {
     "name": "Lasagna Classico",
     "price": 19.79,
-    "image": "https://media.olivegarden.com/en_us/images/product/lasagna-classico-gv-590x365.png",
+    "image": "/assets/images/lasagna-classico.webp",
     "alt": "Lasagna Classico",
     "type": "pasta",
     "category": "entree",
@@ -74,7 +74,7 @@
   {
     "name": "Spaghetti & Meatballs",
     "price": 17.98,
-    "image": "https://media.olivegarden.com/en_us/images/product/Spaghetti-meatballs-gv-590x365.jpg",
+    "image": "/assets/images/spaghetti-and-meatballs.webp",
     "alt": "Spaghetti & Meatballs",
     "type": "pasta",
     "category": "entree",
@@ -83,7 +83,7 @@
   {
     "name": "Spaghetti with Meat Sauce",
     "price": 13.99,
-    "image": "https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Meat_Sauce_590x265.jpg",
+    "image": "/assets/images/spaghetti-and-meat-sauce.webp",
     "alt": "Spaghetti with Meat Sauce",
     "type": "chicken",
     "category": "entree",
@@ -92,7 +92,7 @@
   {
     "name": "Spaghetti with Marinara",
     "price": 13.99,
-    "image": "https://media.olivegarden.com/en_us/images/marketing/Spaghetti_with_Marinara_590x265.jpg",
+    "image": "/assets/images/spaghetti-and-marinara.webp",
     "alt": "Spaghetti with Marinara",
     "type": "pasta",
     "category": "entree",
@@ -101,7 +101,7 @@
   {
     "name": "Chicken Tortelloni Alfredo",
     "price": 23.49,
-    "image": "https://media.olivegarden.com/en_us/images/product/asiago-tortelloni-alfredo-with-grilled-chicken-gv-590x365.png",
+    "image": "/assets/images/chicken-tortelloni-alfredo.webp",
     "alt": "Chicken Tortelloni Alfredo",
     "type": "chicken",
     "category": "entree",

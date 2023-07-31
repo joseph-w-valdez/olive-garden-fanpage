@@ -53,13 +53,13 @@ export default function Spinner() {
         setTimeout(() => {
           router.push("#spinner-result");
           isScrolling = false;
-        }, 5000);
+        }, 6500);
       } else {
         moveLidUp(backgroundRef, setLidCovered);
         setTimeout(() => {
           router.push("#spinner-result");
           isScrolling = false;
-        }, 5000);
+        }, 6500);
       }
       setRandomMenuItem();
     }
@@ -109,7 +109,16 @@ export default function Spinner() {
                 <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} selectedItem={randomItem} />
             </div>
              <button
-                className={`${buttonClassNames.base} ${buttonClassNames.background} ${buttonClassNames.border} ${buttonClassNames.hover} ${buttonClassNames.text} ${buttonClassNames.pointerEvents} ${buttonClassNames.activeBackground} ${buttonClassNames.shadow} ${buttonClassNames.activeShadow}`}
+                className={`
+                  ${buttonClassNames.base}
+                  ${buttonClassNames.background}
+                  ${buttonClassNames.border}
+                  ${buttonClassNames.hover}
+                  ${buttonClassNames.text}
+                  ${buttonClassNames.pointerEvents}
+                  ${buttonClassNames.activeBackground}
+                  ${buttonClassNames.shadow}
+                  ${buttonClassNames.activeShadow}`}
                 onClick={handleButtonClick}
                 disabled={isWaiting}
             >

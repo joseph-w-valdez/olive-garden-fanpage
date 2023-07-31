@@ -22,10 +22,10 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
   useEffect(() => {
 
   // Duplicate the items
-  setDuplicatedItems([...items, ...items, ...items]);
+  setDuplicatedItems([...items, ...items, ...items, ...items]);
 }, [items])
 
-  const getSecondMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
+  const getThirdMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
     if (!itemToFind) return -1;
 
     const firstIndex = items.findIndex(item => item === itemToFind);
@@ -34,8 +34,13 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
 
     const secondIndex = items.findIndex((item, idx) => idx > firstIndex && item === itemToFind);
 
-    return secondIndex;
+    if (secondIndex === -1) return -1;
+
+    const thirdIndex = items.findIndex((item, idx) => idx > secondIndex && item === itemToFind);
+
+    return thirdIndex;
   }
+
 
   useEffect(() => {
     // Reset the matched position to the starting position
@@ -45,11 +50,11 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
 
     // Wait a tick to give React time to render the reset position
     setTimeout(() => {
-      const index = getSecondMatchingIndex(duplicatedItems, selectedItem);
+      const index = getThirdMatchingIndex(duplicatedItems, selectedItem);
       const rightPosition = index * 232 - (232*2.6);
       setMatchedPosition(rightPosition);
       setTransitionDelay(1500);
-      setTransitionDuration(2500);
+      setTransitionDuration(3000);
     }, 400); // Timeout to ensure the new matched position starts after resetting the position and after the dish opening animation is done
 
   }, [duplicatedItems, selectedItem]);
@@ -59,9 +64,10 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
     <>
       <div className={`w-full h-0 absolute top-[26%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
       <div
-        className={`w-full h-fit absolute top-[23%] left-0 transition duration-[${transitionDuration}ms] delay-[${transitionDelay}ms] ease-linear flex`}
+        className={`w-full h-fit absolute top-[23%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
         transform: `translateX(-${matchedPosition}px)`,
+        transitionDuration: `${transitionDuration}ms`
       }}
       >
         {duplicatedItems.map((item, index)=> (

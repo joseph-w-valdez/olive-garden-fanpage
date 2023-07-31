@@ -13,22 +13,44 @@ interface RouletteBarProps {
 
 const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selectedItem }) => {
   const [duplicatedItems, setDuplicatedItems] = useState<MenuItem[]>([]);
+  const [matchedPosition, setMatchedPosition] = useState<number>(0);
   const barAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-background-in' : 'animate-background-out'
   const titleAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-title-in' : 'animate-title-out'
-  const conveyorAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-conveyor-belt' : ''
 
   useEffect(() => {
-    setDuplicatedItems([...items, ...items]);
+    setDuplicatedItems([...items, ...items, ...items]);
   }, [items]);
+
+  const getSecondMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
+    if (!itemToFind) return -1;
+
+    const firstIndex = items.findIndex(item => item === itemToFind);
+
+    if (firstIndex === -1) return -1;
+
+    const secondIndex = items.findIndex((item, idx) => idx > firstIndex && item === itemToFind);
+
+    return secondIndex;
+  }
+
+  useEffect(()=>{
+    const index = getSecondMatchingIndex(duplicatedItems, selectedItem);
+    const rightPosition = index * 232 - (232*2.6);
+    console.log(rightPosition)
+    setMatchedPosition(rightPosition)
+  },[duplicatedItems, selectedItem])
 
   return (
     <>
       <div className={`w-full h-0 absolute top-[25%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
-      <div className={`w-full h-0 absolute top-[25%] opacity-0 transition duration-150 ease-linear ${fadeAnimation} flex `}>
+      <div
+        className={`w-full h-0 absolute top-[25%] ${fadeAnimation} flex `}
+        style={{ right: `${matchedPosition}px`, transition: `right 4000ms ease-linear` }}
+      >
         {duplicatedItems.map((item, index)=> (
             <Image
               key={index} src={item.image} alt={item.alt} width={200} height={200}
-              className={`mx-4 my-6 ${conveyorAnimation}`}
+              className='mx-4 my-6'
             />
           ))}
       </div>

@@ -99,12 +99,3 @@ body {
     transform: translateY(-50%);
   }
 }
-
-@keyframes conveyorBelt {
-   0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-2600px);
-  }
-}

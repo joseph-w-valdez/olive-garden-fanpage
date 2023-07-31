@@ -19,7 +19,6 @@ module.exports = {
         'title-out': 'fadeOutTitle 800ms forwards',
         'fade-in': 'fadeIn 800ms forwards',
         'fade-out': 'fadeOut 800ms forwards',
-        'conveyor-belt': 'conveyorBelt 4000ms forwards'
       },
     },
   },

@@ -37,19 +37,22 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
     const index = getSecondMatchingIndex(duplicatedItems, selectedItem);
     const rightPosition = index * 232 - (232*2.6);
     setMatchedPosition(rightPosition)
+    console.log(fadeAnimation)
   },[duplicatedItems, selectedItem])
 
   return (
     <>
       <div className={`w-full h-0 absolute top-[25%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
       <div
-        className={`w-full h-0 absolute top-[25%] ${fadeAnimation} flex roulette-bar-transition`}
-        style={{ right: `${matchedPosition}px` }}
+        className={`w-full h-content absolute top-[25%] left-0 transition duration-[2500ms] delay-[1500ms] ease-linear flex`}
+        style={{
+        transform: `translateX(-${matchedPosition}px)`,
+      }}
       >
         {duplicatedItems.map((item, index)=> (
             <Image
               key={index} src={item.image} alt={item.alt} width={200} height={200}
-              className='mx-4 my-6 relative'
+              className={`mx-4 my-6 relative ${fadeAnimation}`}
             />
           ))}
       </div>

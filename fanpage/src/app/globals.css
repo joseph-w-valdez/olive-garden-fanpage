@@ -31,10 +31,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.roulette-bar-transition {
-  transition: all 4000ms ease-linear;
-}
-
 @keyframes fadeIn {
   to {
     opacity: 1;

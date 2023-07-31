@@ -28,7 +28,7 @@ export default function Spinner() {
             console.error("Error fetching data:", error);
         }
     };
-
+    // TO-DO: update name to reflect selected dish
     const setRandomMenuItem = () => {
         if (items && items.length > 0) {
             const resultedItem = shuffleArray(items).slice(0, 1)[0];
@@ -39,27 +39,28 @@ export default function Spinner() {
     useEffect(() => {
     let isScrolling = false;
 
+    // TO-DO: consider cleaning up callback function
     const handleScroll = () => {
       if (!isScrolling) {
         setIsWaiting(false);
         isScrolling = true;
       }
     };
-
+    // move lid up or down then scroll to #spinner-result
+    // TO-DO: update backgroundRef references to lidRef
+    // consider using a separate file custom hook
     if (items && items.length > 0) {
       if (!lidCovered) {
         moveLidDown(backgroundRef, setLidCovered);
         setTimeout(() => moveLidUp(backgroundRef, setLidCovered), 800);
         setTimeout(() => {
           router.push("#spinner-result");
-          isScrolling = false;
-        }, 6500);
+        }, 4500);
       } else {
         moveLidUp(backgroundRef, setLidCovered);
         setTimeout(() => {
           router.push("#spinner-result");
-          isScrolling = false;
-        }, 6500);
+        }, 4500);
       }
       setRandomMenuItem();
     }
@@ -78,17 +79,18 @@ export default function Spinner() {
         }
     };
 
+    // considering componentizing the button and its classes
     const buttonClassNames = {
-    base: "absolute text-xl bottom-[10%] py-3 px-5 btn",
-    background: isWaiting ? "bg-red-500 cursor-not-allowed" : "bg-black bg-opacity-50",
-    border: "border-4 border-gray-300 rounded",
-    hover: isWaiting ? "hover:bg-red-500" : "hover:bg-opacity-75",
-    text: "text-white font-extrabold",
-    pointerEvents: isWaiting ? "pointer-events-none" : "pointer-events-auto",
-    activeBackground: isWaiting ? "active:bg-red-500" : "active:bg-opacity-75",
-    shadow: "shadow-xl",
-    activeShadow: "active:shadow-md",
-  };
+      base: "absolute text-xl bottom-[10%] py-3 px-5 btn",
+      background: isWaiting ? "bg-red-500 cursor-not-allowed" : "bg-black bg-opacity-50",
+      border: "border-4 border-gray-300 rounded",
+      hover: isWaiting ? "hover:bg-red-500" : "hover:bg-opacity-75",
+      text: "text-white font-extrabold",
+      pointerEvents: isWaiting ? "pointer-events-none" : "pointer-events-auto",
+      activeBackground: isWaiting ? "active:bg-red-500" : "active:bg-opacity-75",
+      shadow: "shadow-xl",
+      activeShadow: "active:shadow-md",
+    };
 
     return (
         <section className="relative flex flex-wrap justify-center items-center">

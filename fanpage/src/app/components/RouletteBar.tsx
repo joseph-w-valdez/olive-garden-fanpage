@@ -14,33 +14,27 @@ interface RouletteBarProps {
 const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selectedItem }) => {
   const [duplicatedItems, setDuplicatedItems] = useState<MenuItem[]>([]);
   const [matchedPosition, setMatchedPosition] = useState<number>(0);
-  const barAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-background-in' : 'animate-background-out'
-  const titleAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-title-in' : 'animate-title-out'
   const [transitionDelay, setTransitionDelay] = useState<number>(0);
   const [transitionDuration, setTransitionDuration] = useState<number>(0);
 
-  useEffect(() => {
+  // change the word fade for either background or title
+  const barAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-background-in' : 'animate-background-out'
+  const titleAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-title-in' : 'animate-title-out'
 
-  // Duplicate the items
+  useEffect(() => {
+  // Duplicate the items when the items value changes to show illusion of looping effect
   setDuplicatedItems([...items, ...items, ...items, ...items]);
 }, [items])
 
   const getThirdMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
     if (!itemToFind) return -1;
-
     const firstIndex = items.findIndex(item => item === itemToFind);
-
     if (firstIndex === -1) return -1;
-
-    const secondIndex = items.findIndex((item, idx) => idx > firstIndex && item === itemToFind);
-
+    const secondIndex = items.findIndex((item, index) => index > firstIndex && item === itemToFind);
     if (secondIndex === -1) return -1;
-
-    const thirdIndex = items.findIndex((item, idx) => idx > secondIndex && item === itemToFind);
-
+    const thirdIndex = items.findIndex((item, index) => index > secondIndex && item === itemToFind);
     return thirdIndex;
   }
-
 
   useEffect(() => {
     // Reset the matched position to the starting position
@@ -48,10 +42,10 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
     setTransitionDuration(0);
     setMatchedPosition(0);
 
-    // Wait a tick to give React time to render the reset position
+    // Wait a bit to give React time to render the reset position
     setTimeout(() => {
       const index = getThirdMatchingIndex(duplicatedItems, selectedItem);
-      const rightPosition = index * 232 - (232*2.6);
+      const rightPosition = index * 232 - (232*2.6); // TO-DO: update to use percentages to work responsively
       setMatchedPosition(rightPosition);
       setTransitionDelay(1500);
       setTransitionDuration(3000);
@@ -66,11 +60,12 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
       <div
         className={`w-full h-fit absolute top-[23%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
-        transform: `translateX(-${matchedPosition}px)`,
+        transform: `translateX(-${matchedPosition}px)`, /* change this to use percentages for responsiveness */
         transitionDuration: `${transitionDuration}ms`
       }}
       >
         {duplicatedItems.map((item, index)=> (
+            /* TO-DO: figure out why the height and width values aren't being applied correctly */
             <Image
               key={index} src={item.image} alt={item.alt} width={200} height={200}
               className={`mx-4 my-6 w-[200px] relative ${fadeAnimation}`}

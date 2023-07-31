@@ -67,7 +67,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
         {duplicatedItems.map((item, index)=> (
             <Image
               key={index} src={item.image} alt={item.alt} width={200} height={200}
-              className={`mx-4 my-6 relative ${fadeAnimation}`}
+              className={`mx-4 my-6 w-[200px] relative ${fadeAnimation}`}
             />
           ))}
       </div>

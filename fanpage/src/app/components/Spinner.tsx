@@ -87,7 +87,6 @@ export default function Spinner() {
     pointerEvents: isWaiting ? "pointer-events-none" : "pointer-events-auto",
     activeBackground: isWaiting ? "active:bg-red-500" : "active:bg-opacity-75",
     shadow: "shadow-xl",
-    activeTranslate: isWaiting ? "active:translate-y-0" : "active:translate-y-2",
     activeShadow: "active:shadow-md",
   };
 
@@ -110,7 +109,7 @@ export default function Spinner() {
                 <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} selectedItem={randomItem} />
             </div>
              <button
-                className={`${buttonClassNames.base} ${buttonClassNames.background} ${buttonClassNames.border} ${buttonClassNames.hover} ${buttonClassNames.text} ${buttonClassNames.pointerEvents} ${buttonClassNames.activeBackground} ${buttonClassNames.shadow} ${buttonClassNames.activeTranslate} ${buttonClassNames.activeShadow}`}
+                className={`${buttonClassNames.base} ${buttonClassNames.background} ${buttonClassNames.border} ${buttonClassNames.hover} ${buttonClassNames.text} ${buttonClassNames.pointerEvents} ${buttonClassNames.activeBackground} ${buttonClassNames.shadow} ${buttonClassNames.activeShadow}`}
                 onClick={handleButtonClick}
                 disabled={isWaiting}
             >

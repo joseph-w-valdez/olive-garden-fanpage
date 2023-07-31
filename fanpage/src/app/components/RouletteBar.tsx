@@ -16,10 +16,14 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
   const [matchedPosition, setMatchedPosition] = useState<number>(0);
   const barAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-background-in' : 'animate-background-out'
   const titleAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-title-in' : 'animate-title-out'
+  const [transitionDelay, setTransitionDelay] = useState<number>(0);
+  const [transitionDuration, setTransitionDuration] = useState<number>(0);
 
   useEffect(() => {
-    setDuplicatedItems([...items, ...items, ...items]);
-  }, [items]);
+
+  // Duplicate the items
+  setDuplicatedItems([...items, ...items, ...items]);
+}, [items])
 
   const getSecondMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
     if (!itemToFind) return -1;
@@ -33,18 +37,29 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
     return secondIndex;
   }
 
-  useEffect(()=>{
-    const index = getSecondMatchingIndex(duplicatedItems, selectedItem);
-    const rightPosition = index * 232 - (232*2.6);
-    setMatchedPosition(rightPosition)
-    console.log(fadeAnimation)
-  },[duplicatedItems, selectedItem])
+  useEffect(() => {
+    // Reset the matched position to the starting position
+    setTransitionDelay(0);
+    setTransitionDuration(0);
+    setMatchedPosition(0);
+
+    // Wait a tick to give React time to render the reset position
+    setTimeout(() => {
+      const index = getSecondMatchingIndex(duplicatedItems, selectedItem);
+      const rightPosition = index * 232 - (232*2.6);
+      setMatchedPosition(rightPosition);
+      setTransitionDelay(1500);
+      setTransitionDuration(2500);
+    }, 400); // Timeout to ensure the new matched position starts after resetting the position and after the dish opening animation is done
+
+  }, [duplicatedItems, selectedItem]);
+
 
   return (
     <>
-      <div className={`w-full h-0 absolute top-[25%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
+      <div className={`w-full h-0 absolute top-[26%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
       <div
-        className={`w-full h-content absolute top-[25%] left-0 transition duration-[2500ms] delay-[1500ms] ease-linear flex`}
+        className={`w-full h-fit absolute top-[23%] left-0 transition duration-[${transitionDuration}ms] delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
         transform: `translateX(-${matchedPosition}px)`,
       }}

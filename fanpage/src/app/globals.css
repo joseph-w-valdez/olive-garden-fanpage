@@ -86,7 +86,7 @@ body {
 @keyframes fadeInBackground {
   to {
     opacity: 0.5;
-    height: 30%;
+    height: 26%;
     transform: translateY(-50%);
   }
 }
@@ -94,7 +94,7 @@ body {
 @keyframes fadeOutBackground {
   from {
     opacity: 0.5;
-    height: 30%;
+    height: 26%;
     transform: translateY(-50%);
   }
   to {

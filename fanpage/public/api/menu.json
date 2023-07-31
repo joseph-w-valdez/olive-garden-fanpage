@@ -106,5 +106,14 @@
     "type": "chicken",
     "category": "entree",
     "description": "Grilled chicken breasts generously filled with a medley of Italian cheeses and crowned with mushrooms, all enveloped in a savory Marsala wine sauce."
+  },
+  {
+    "name": "Breadsticks",
+    "price": 0.00,
+    "image": "/assets/images/breadsticks.webp",
+    "alt": "Breadsticks",
+    "type": "Bread",
+    "category": "appetizer",
+    "description": "An Olive Garden Favorite. Available Freshly-Baked or Bake-At-Home. Add an extra dozen or half dozen breadsticks to your online order."
   }
 ]

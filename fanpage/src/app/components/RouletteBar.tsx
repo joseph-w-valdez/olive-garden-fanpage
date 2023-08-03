@@ -47,7 +47,8 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     setTimeout(() => {
       const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
       const imageWidth = 0.25 * window.innerWidth
-      const rightPosition = index * imageWidth - (imageWidth * 1.15); // TO-DO: update to use percentages to work responsively
+      // desktop is 1.15
+      const rightPosition = index * imageWidth - (imageWidth * 8); // TO-DO: update to use percentages to work responsively
       setMatchedPosition(rightPosition);
       setTransitionDelay(1500);
       setTransitionDuration(3000);

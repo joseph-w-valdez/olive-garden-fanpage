@@ -48,7 +48,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
       const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
       const imageWidth = 0.25 * window.innerWidth
       // desktop is 1.15
-      const rightPosition = index * imageWidth - (imageWidth * 8); // TO-DO: update to use percentages to work responsively
+      const rightPosition = index * imageWidth - (imageWidth * 1.15); // TO-DO: update to use percentages to work responsively
       setMatchedPosition(rightPosition);
       setTransitionDelay(1500);
       setTransitionDuration(3000);
@@ -68,9 +68,11 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
         }}
       >
         {duplicatedItems.map((item, index) => (
+          // nest this in an DIV
           <Image
             key={index} src={item.image} alt={item.alt} width={200} height={200}
             className={`mx-4 my-[2%] w-[25%] relative ${fadeAnimation}`}
+            priority={true}
           />
         ))}
       </div>

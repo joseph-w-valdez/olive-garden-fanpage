@@ -32,23 +32,23 @@ body {
 }
 
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
   to {
     opacity: 1;
-    height: 25%;
-    transform: translateY(-50%);
+    height: 100%;
   }
 }
 
 @keyframes fadeOut {
   from {
     opacity: 1;
-    height: 25%;
-    transform: translateY(-50%);
+    height: 100%;
   }
   to {
     opacity: 0;
     height: 0;
-    transform: translateY(-50%);
   }
 }
 

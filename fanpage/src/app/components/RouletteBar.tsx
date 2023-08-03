@@ -47,8 +47,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     setTimeout(() => {
       const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
       const imageWidth = 0.25 * window.innerWidth
-      // desktop is 1.15
-      const rightPosition = index * imageWidth - (imageWidth * 1.15); // TO-DO: update to use percentages to work responsively
+      const rightPosition = index * imageWidth - (imageWidth * 3.83); // TO-DO: update to use percentages to work responsively
       setMatchedPosition(rightPosition);
       setTransitionDelay(1500);
       setTransitionDuration(3000);
@@ -61,7 +60,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     <>
       <div className={`w-full h-0 absolute top-[26%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
       <div
-        className={`w-full h-fit absolute top-[23%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
+        className={`h-[25%] absolute top-[12%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
           transform: `translateX(-${matchedPosition}px)`, /* change this to use percentages for responsiveness */
           transitionDuration: `${transitionDuration}ms`
@@ -69,11 +68,14 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
       >
         {duplicatedItems.map((item, index) => (
           // nest this in an DIV
-          <Image
-            key={index} src={item.image} alt={item.alt} width={200} height={200}
-            className={`mx-4 my-[2%] w-[25%] relative ${fadeAnimation}`}
-            priority={true}
-          />
+          <div key={index} className='w-[20vw] relative m-2 mt-3 lg:m-4 lg:mt-8 overflow-hidden'>
+            <Image
+              src={item.image} alt={item.alt} height={0} width={0} sizes='100vw'
+              className={`w-full object-cover ${fadeAnimation}`}
+              priority
+              fill
+            />
+          </div>
         ))}
       </div>
       <h1 className={`w-full absolute ml-6 bottom-[15%] text-right pr-12 text-7xl text-black ${titleAnimation} transition duration-150 ease-linear`}>{finalMenuItem?.name}</h1>

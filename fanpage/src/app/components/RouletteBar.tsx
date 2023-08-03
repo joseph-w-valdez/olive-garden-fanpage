@@ -68,7 +68,6 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
         }}
       >
         {duplicatedItems.map((item, index) => (
-          /* TO-DO: figure out why the height and width values aren't being applied correctly */
           <Image
             key={index} src={item.image} alt={item.alt} width={200} height={200}
             className={`mx-4 my-[2%] w-[25%] relative ${fadeAnimation}`}

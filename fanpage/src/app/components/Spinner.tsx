@@ -16,7 +16,7 @@ export default function Spinner() {
   const [lidCovered, setLidCovered] = useState(true);
   const [isWaiting, setIsWaiting] = useState(false);
   const { finalMenuItem, setFinalMenuItem } = useFinalMenuItem();
-  const backgroundRef = useRef<HTMLImageElement>(null);
+  const lidRef = useRef<HTMLImageElement>(null);
   const router = useRouter();
 
   const fetchRandomItems = async () => {
@@ -47,17 +47,16 @@ export default function Spinner() {
       }
     };
     // move lid up or down then scroll to #spinner-result
-    // TO-DO: update backgroundRef references to lidRef
-    // consider using a separate file custom hook
+    // To-do consider using a separate file custom hook
     if (items && items.length > 0) {
       if (!lidCovered) {
-        moveLidDown(backgroundRef, setLidCovered);
-        setTimeout(() => moveLidUp(backgroundRef, setLidCovered), 800);
+        moveLidDown(lidRef, setLidCovered);
+        setTimeout(() => moveLidUp(lidRef, setLidCovered), 800);
         setTimeout(() => {
           router.push("#spinner-result");
         }, 4500);
       } else {
-        moveLidUp(backgroundRef, setLidCovered);
+        moveLidUp(lidRef, setLidCovered);
         setTimeout(() => {
           router.push("#spinner-result");
         }, 4500);
@@ -102,14 +101,13 @@ export default function Spinner() {
           alt="Background Waiter Image"
         />
         <Image
-          ref={backgroundRef}
+          ref={lidRef}
           className="w-full max-w-[1250px] h-full max-h-[1000px] absolute top-0"
           src={DishLid}
           objectFit="cover"
           alt="Dish Lid"
         />
-        {/* To-do take out selectedcItem when roulette bar is updated with useFinalMenuItem */}
-        <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} selectedItem={finalMenuItem} />
+        <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} />
       </div>
       <button
         className={`

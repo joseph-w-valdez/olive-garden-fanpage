@@ -2,29 +2,30 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MenuItem } from '../types/MenuItem';
+import { useFinalMenuItem } from "../contexts/SpinnerResultContext"
 
 type FadeAnimationType = 'animate-fade-in' | 'animate-fade-out';
 
 interface RouletteBarProps {
   fadeAnimation: FadeAnimationType;
   items: MenuItem[];
-  selectedItem: MenuItem | null;
 }
 
-const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selectedItem }) => {
+const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   const [duplicatedItems, setDuplicatedItems] = useState<MenuItem[]>([]);
   const [matchedPosition, setMatchedPosition] = useState<number>(0);
   const [transitionDelay, setTransitionDelay] = useState<number>(0);
   const [transitionDuration, setTransitionDuration] = useState<number>(0);
+  const { finalMenuItem } = useFinalMenuItem()
 
   // change the word fade for either background or title
   const barAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-background-in' : 'animate-background-out'
   const titleAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-title-in' : 'animate-title-out'
 
   useEffect(() => {
-  // Duplicate the items when the items value changes to show illusion of looping effect
-  setDuplicatedItems([...items, ...items, ...items, ...items]);
-}, [items])
+    // Duplicate the items when the items value changes to show illusion of looping effect
+    setDuplicatedItems([...items, ...items, ...items, ...items]);
+  }, [items])
 
   const getThirdMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
     if (!itemToFind) return -1;
@@ -44,14 +45,14 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
 
     // Wait a bit to give React time to render the reset position
     setTimeout(() => {
-      const index = getThirdMatchingIndex(duplicatedItems, selectedItem);
-      const rightPosition = index * 232 - (232*2.6); // TO-DO: update to use percentages to work responsively
+      const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
+      const rightPosition = index * 232 - (232 * 2.6); // TO-DO: update to use percentages to work responsively
       setMatchedPosition(rightPosition);
       setTransitionDelay(1500);
       setTransitionDuration(3000);
     }, 400); // Timeout to ensure the new matched position starts after resetting the position and after the dish opening animation is done
 
-  }, [duplicatedItems, selectedItem]);
+  }, [duplicatedItems, finalMenuItem]);
 
 
   return (
@@ -60,21 +61,21 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items, selecte
       <div
         className={`w-full h-fit absolute top-[23%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
-        transform: `translateX(-${matchedPosition}px)`, /* change this to use percentages for responsiveness */
-        transitionDuration: `${transitionDuration}ms`
-      }}
+          transform: `translateX(-${matchedPosition}px)`, /* change this to use percentages for responsiveness */
+          transitionDuration: `${transitionDuration}ms`
+        }}
       >
-        {duplicatedItems.map((item, index)=> (
-            /* TO-DO: figure out why the height and width values aren't being applied correctly */
-            <Image
-              key={index} src={item.image} alt={item.alt} width={200} height={200}
-              className={`mx-4 my-6 w-[200px] relative ${fadeAnimation}`}
-            />
-          ))}
+        {duplicatedItems.map((item, index) => (
+          /* TO-DO: figure out why the height and width values aren't being applied correctly */
+          <Image
+            key={index} src={item.image} alt={item.alt} width={200} height={200}
+            className={`mx-4 my-6 w-[200px] relative ${fadeAnimation}`}
+          />
+        ))}
       </div>
-      <h1 className={`w-full absolute ml-6 bottom-[15%] text-right pr-12 text-7xl text-black ${titleAnimation} transition duration-150 ease-linear`}>{selectedItem?.name}</h1>
+      <h1 className={`w-full absolute ml-6 bottom-[15%] text-right pr-12 text-7xl text-black ${titleAnimation} transition duration-150 ease-linear`}>{finalMenuItem?.name}</h1>
     </>
-    )
+  )
 };
 
 export default RouletteBar;

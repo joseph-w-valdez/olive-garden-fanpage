@@ -1,11 +1,11 @@
 import Spinner from "../components/Spinner";
 import Results from '../components/SpinnerResult'
-import { RandomItemProvider } from "../contexts/SpinnerResultContext";
+import { FinalMenuItemProvider } from "../contexts/SpinnerResultContext";
 
 export default function RoulettePage() {
 
   return (
-      <RandomItemProvider>
+      <FinalMenuItemProvider>
         <div className="relative bg-white w-full flex flex-col item-center justify-center">
           <Spinner />
           <section className="text-center text-black py-10 block lg:hidden">
@@ -14,6 +14,6 @@ export default function RoulettePage() {
           </section>
           <Results />
         </div>
-      </RandomItemProvider>
+      </FinalMenuItemProvider>
   )
 }

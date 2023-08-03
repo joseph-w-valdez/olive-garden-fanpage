@@ -2,31 +2,31 @@
 import React, { useState, createContext, useContext, ReactNode } from "react";
 import { MenuItem } from "../types/MenuItem";
 
-interface RandomItemContextType {
-    randomItem: MenuItem | null;
-    setRandomItem: React.Dispatch<React.SetStateAction<MenuItem | null>>;
+interface FinalMenuItemContextType {
+    finalMenuItem: MenuItem | null;
+    setFinalMenuItem: React.Dispatch<React.SetStateAction<MenuItem | null>>;
 }
 
-const RandomItemContext = createContext<RandomItemContextType | undefined>(undefined);
+const FinalMenuItemContext = createContext<FinalMenuItemContextType | undefined>(undefined);
 
-export const useRandomItem = () => {
-    const context = useContext(RandomItemContext);
+export const useFinalMenuItem = () => {
+    const context = useContext(FinalMenuItemContext);
     if (!context) {
-        throw new Error('useRandomItem must be used within a RandomItemProvider');
+        throw new Error('useFinalMenuItem must be used within a FinalMenuItemProvider');
     }
     return context;
 };
 
-interface RandomItemProviderProps {
+interface FinalMenuItemProviderProps {
     children: ReactNode;
 }
 
-export const RandomItemProvider: React.FC<RandomItemProviderProps> = ({ children }) => {
-    const [randomItem, setRandomItem] = useState<MenuItem | null>(null);
+export const FinalMenuItemProvider: React.FC<FinalMenuItemProviderProps> = ({ children }) => {
+    const [finalMenuItem, setFinalMenuItem] = useState<MenuItem | null>(null);
 
     return (
-        <RandomItemContext.Provider value={{ randomItem, setRandomItem }}>
+        <FinalMenuItemContext.Provider value={{ finalMenuItem, setFinalMenuItem }}>
             {children}
-        </RandomItemContext.Provider>
+        </FinalMenuItemContext.Provider>
     );
 };

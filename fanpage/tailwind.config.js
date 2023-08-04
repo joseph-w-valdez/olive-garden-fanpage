@@ -12,6 +12,14 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+       animation: {
+        'background-in': 'fadeInBackground 800ms forwards',
+        'background-out': 'fadeOutBackground 800ms forwards',
+        'title-in': 'fadeInTitle 800ms forwards',
+        'title-out': 'fadeOutTitle 800ms forwards',
+        'fade-in': 'fadeIn 800ms forwards',
+        'fade-out': 'fadeOut 800ms forwards',
+      },
     },
   },
   plugins: [],

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,13 +26,11 @@ html {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #F2E9E4;
+}
+
+.lora {
+  font-family: 'Lora', serif;
 }
 
 @keyframes fadeIn {
@@ -95,4 +97,12 @@ body {
     height: 0;
     transform: translateY(-50%);
   }
+}
+=======
+.lugra {
+  font-family: 'Lugrasimo', cursive;
+}
+
+.red-hat {
+  font-family: 'Red Hat Display', sans-serif;
 }

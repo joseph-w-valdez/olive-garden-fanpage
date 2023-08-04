@@ -40,18 +40,21 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   useEffect(() => {
     // Reset the matched position to the starting position
     setTransitionDelay(0);
-    setTransitionDuration(0);
-    setMatchedPosition(0);
+    setTimeout(() => {
+      setTransitionDuration(0);
+    }, 10);
+    setTimeout(() => {
+      setMatchedPosition(0);
+    }, 10);
 
     // Wait a bit to give React time to render the reset position
     setTimeout(() => {
       const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
-      const imageWidth = 0.25 * window.innerWidth
-      const rightPosition = index * imageWidth - (imageWidth * 3.83); // TO-DO: update to use percentages to work responsively
-      setMatchedPosition(rightPosition);
+      const rightPosition = (index - 2.1) * 22; // TO-DO: update to use percentages to work responsively
       setTransitionDelay(1500);
       setTransitionDuration(3000);
-    }, 400); // Timeout to ensure the new matched position starts after resetting the position and after the dish opening animation is done
+      setMatchedPosition(rightPosition);
+    }, 1500); // Timeout to ensure the new matched position starts after resetting the position and after the dish opening animation is done
 
   }, [duplicatedItems, finalMenuItem]);
 
@@ -62,16 +65,16 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
       <div
         className={`h-[25%] absolute top-[12%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
-          transform: `translateX(-${matchedPosition}px)`, /* change this to use percentages for responsiveness */
+          transform: `translateX(-${matchedPosition}vw)`, /* change this to use percentages for responsiveness */
           transitionDuration: `${transitionDuration}ms`
         }}
       >
         {duplicatedItems.map((item, index) => (
           // nest this in an DIV
-          <div key={index} className='w-[20vw] relative m-2 mt-3 lg:m-4 lg:mt-8 overflow-hidden'>
+          <div key={index} className='w-[20vw] relative m-[1vw] mt-[3vw] overflow-hidden'>
             <Image
               src={item.image} alt={item.alt} height={0} width={0} sizes='100vw'
-              className={`w-full object-cover ${fadeAnimation}`}
+              className={`${index} w-full object-cover ${fadeAnimation}`}
               priority
               fill
             />

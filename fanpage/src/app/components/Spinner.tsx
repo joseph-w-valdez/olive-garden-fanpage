@@ -64,19 +64,6 @@ export default function Spinner() {
     }
   };
 
-  // considering componentizing the button and its classes
-  const buttonClassNames = {
-    base: "absolute text-xl bottom-[10%] py-3 px-5 btn",
-    background: isWaiting ? "bg-red-500 cursor-not-allowed" : "bg-black bg-opacity-50",
-    border: "border-4 border-gray-300 rounded",
-    hover: isWaiting ? "hover:bg-red-500" : "hover:bg-opacity-75",
-    text: "text-white font-extrabold",
-    pointerEvents: isWaiting ? "pointer-events-none" : "pointer-events-auto",
-    activeBackground: isWaiting ? "active:bg-red-500" : "active:bg-opacity-75",
-    shadow: "shadow-xl",
-    activeShadow: "active:shadow-md",
-  };
-
   return (
     <section className="relative flex flex-wrap justify-center items-center">
       <div className="relative left-0 w-full h-full overflow-hidden">

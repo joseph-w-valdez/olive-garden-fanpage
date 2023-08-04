@@ -56,17 +56,17 @@ body {
     transform: translateY(0%);
   }
   to {
-    opacity: 0.5;
+    opacity: 1;
     height: 27%;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
   }
 }
 
 @keyframes fadeOutTitle {
   from {
-    opacity: 0.5;
+    opacity: 1;
     height: 25%;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
   }
   to {
     opacity: 0;

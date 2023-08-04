@@ -21,7 +21,6 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
 
   // change the word fade for either background or title
   const barAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-background-in' : 'animate-background-out'
-  const titleAnimation = fadeAnimation === 'animate-fade-in' ? 'animate-title-in' : 'animate-title-out'
 
   useEffect(() => {
     // Duplicate the items when the items value changes to show illusion of looping effect
@@ -114,7 +113,6 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
           </div>
         ))}
       </div>
-      <h1 className={`w-full absolute ml-6 bottom-[15%] text-right pr-12 text-7xl text-black ${titleAnimation} transition duration-150 ease-linear`}>{finalMenuItem?.name}</h1>
     </>
   )
 };

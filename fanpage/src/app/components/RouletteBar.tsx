@@ -16,6 +16,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   const [matchedPosition, setMatchedPosition] = useState<number>(0);
   const [transitionDelay, setTransitionDelay] = useState<number>(0);
   const [transitionDuration, setTransitionDuration] = useState<number>(0);
+  const [viewportWidth, setViewportWidth] = useState<number>(window.innerWidth);
   const { finalMenuItem } = useFinalMenuItem()
 
   // change the word fade for either background or title
@@ -38,6 +39,18 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   }
 
   useEffect(() => {
+    const handleWindowResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
+  useEffect(() => {
     // Reset the matched position to the starting position
     setTransitionDelay(0);
     setTimeout(() => {
@@ -47,34 +60,54 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
       setMatchedPosition(0);
     }, 10);
 
-    // Wait a bit to give React time to render the reset position
-    setTimeout(() => {
+  // TO-DO: make responsive up to 4100 px vw
+  // calculate a refinement factor to center the selected dish to be underneath the cover
+  const getRefinementFactor = (): number => {
+    if (viewportWidth <= 1200) {
+      return 2.2;
+    } else if (viewportWidth <= 1920) {
+      const upperResolution = 1920
+      const lowerResolution = 1200
+      // Linearly interpolate between 2.2 and 1.25 for values between 1200 and 1920
+      const scalingModifier = (1.25 - 2.2) / (upperResolution - lowerResolution);
+      return scalingModifier * (viewportWidth - 1200) + 2.2;
+    } else {
+      return 0.4
+    }
+  };
+
+    const handleResize = () => {
+      const refinementFactor = getRefinementFactor()
       const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
-      const rightPosition = (index - 2.1) * 22; // TO-DO: update to use percentages to work responsively
+      const rightPosition = (index - refinementFactor) * 22;
       setTransitionDelay(1500);
       setTransitionDuration(3000);
       setMatchedPosition(rightPosition);
-    }, 1500); // Timeout to ensure the new matched position starts after resetting the position and after the dish opening animation is done
+    };
 
-  }, [duplicatedItems, finalMenuItem]);
+    // Wait a bit to give time to render the reset position
+    setTimeout(() => {
+      handleResize()
+    }, 1500);
+
+  }, [duplicatedItems, finalMenuItem, viewportWidth]);
 
 
   return (
     <>
       <div className={`w-full h-0 absolute top-[26%] bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
       <div
-        className={`h-[25%] absolute top-[12%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
+        className={`h-[26%] absolute top-[12%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
-          transform: `translateX(-${matchedPosition}vw)`, /* change this to use percentages for responsiveness */
+          transform: `translateX(-${matchedPosition}vw)`,
           transitionDuration: `${transitionDuration}ms`
         }}
       >
         {duplicatedItems.map((item, index) => (
-          // nest this in an DIV
-          <div key={index} className='w-[20vw] relative m-[1vw] mt-[3vw] overflow-hidden'>
+          <div key={index} className='w-[20vw] relative m-[1vw] mt-[2vw] overflow-hidden'>
             <Image
               src={item.image} alt={item.alt} height={0} width={0} sizes='100vw'
-              className={`${index} w-full object-cover ${fadeAnimation}`}
+              className={`${index} object-cover ${fadeAnimation}`}
               priority
               fill
             />

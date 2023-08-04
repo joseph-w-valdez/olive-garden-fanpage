@@ -15,7 +15,7 @@ export default function Spinner() {
   const [items, setItems] = useState<MenuItem[]>([]);
   const [lidCovered, setLidCovered] = useState(true);
   const [isWaiting, setIsWaiting] = useState(false);
-  const { finalMenuItem, setFinalMenuItem } = useFinalMenuItem();
+  const { setFinalMenuItem } = useFinalMenuItem();
   const lidRef = useRef<HTMLImageElement>(null);
   const router = useRouter();
 
@@ -54,12 +54,12 @@ export default function Spinner() {
         setTimeout(() => moveLidUp(lidRef, setLidCovered), 800);
         setTimeout(() => {
           router.push("#spinner-result");
-        }, 4500);
+        }, 5500);
       } else {
         moveLidUp(lidRef, setLidCovered);
         setTimeout(() => {
           router.push("#spinner-result");
-        }, 4500);
+        }, 5500);
       }
       pickRandomMenuItem();
     }

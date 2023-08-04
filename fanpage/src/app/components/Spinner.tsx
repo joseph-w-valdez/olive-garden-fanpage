@@ -37,38 +37,23 @@ export default function Spinner() {
   };
 
   useEffect(() => {
-    let isScrolling = false;
-
-    // TO-DO: consider cleaning up callback function
-    const handleScroll = () => {
-      if (!isScrolling) {
-        setIsWaiting(false);
-        isScrolling = true;
-      }
-    };
-    // move lid up or down then scroll to #spinner-result
-    // To-do consider using a separate file custom hook
     if (items && items.length > 0) {
       if (!lidCovered) {
         moveLidDown(lidRef, setLidCovered);
         setTimeout(() => moveLidUp(lidRef, setLidCovered), 800);
-        setTimeout(() => {
-          router.push("#spinner-result");
-        }, 5500);
       } else {
         moveLidUp(lidRef, setLidCovered);
-        setTimeout(() => {
-          router.push("#spinner-result");
-        }, 5500);
       }
+      // Timer for when the roulette wheel finishes and scrolls down to SpinnerResult.
+      setTimeout(() => {
+        router.push("#spinner-result");
+      }, 5500);
+      // Timer for re-enabling spin button
+      setTimeout(() => {
+        setIsWaiting(!isWaiting);
+      }, 6500);
       pickRandomMenuItem();
     }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, [items]);
 
   const handleButtonClick = () => {

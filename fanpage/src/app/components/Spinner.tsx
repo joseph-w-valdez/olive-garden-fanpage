@@ -10,6 +10,7 @@ import { moveLidUp, moveLidDown } from "../utilities/lidAnimations";
 import { useFinalMenuItem } from "../contexts/SpinnerResultContext";
 import { useRouter } from "next/navigation";
 import RouletteBar from "./RouletteBar";
+import RouletteButton from "./RouletteButton";
 
 export default function Spinner() {
   const [items, setItems] = useState<MenuItem[]>([]);
@@ -94,22 +95,7 @@ export default function Spinner() {
         />
         <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} />
       </div>
-      <button
-        className={`
-                  ${buttonClassNames.base}
-                  ${buttonClassNames.background}
-                  ${buttonClassNames.border}
-                  ${buttonClassNames.hover}
-                  ${buttonClassNames.text}
-                  ${buttonClassNames.pointerEvents}
-                  ${buttonClassNames.activeBackground}
-                  ${buttonClassNames.shadow}
-                  ${buttonClassNames.activeShadow}`}
-        onClick={handleButtonClick}
-        disabled={isWaiting}
-      >
-        {isWaiting ? "WAIT" : "SPIN"}
-      </button>
+      <RouletteButton waiting={isWaiting} click={handleButtonClick} />
       <div className="absolute text-center bottom-[10%] right-[5rem] text-black hidden lg:block">
         <h1 className="text-2xl">Savor The Unexpected</h1>
         <p className="text-base">Olive Garden&apos;s Roulette of Culinary Treasures</p>

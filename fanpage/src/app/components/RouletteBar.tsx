@@ -38,15 +38,21 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   }
 
   useEffect(() => {
-    const handleWindowResize = () => {
+  // Ensure this code is only executed on the client-side,
+  // window object is not available on the server-side
+    if (typeof window !== 'undefined') {
       setViewportWidth(window.innerWidth);
-    };
 
-    window.addEventListener('resize', handleWindowResize);
+      const handleWindowResize = () => {
+        setViewportWidth(window.innerWidth);
+      };
 
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
+      window.addEventListener('resize', handleWindowResize);
+
+      return () => {
+        window.removeEventListener('resize', handleWindowResize);
+      };
+    }
   }, []);
 
   useEffect(() => {

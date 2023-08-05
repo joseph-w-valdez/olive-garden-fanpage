@@ -16,7 +16,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   const [matchedPosition, setMatchedPosition] = useState<number>(0);
   const [transitionDelay, setTransitionDelay] = useState<number>(0);
   const [transitionDuration, setTransitionDuration] = useState<number>(0);
-  const [viewportWidth, setViewportWidth] = useState<number>(window.innerWidth);
+  const [viewportWidth, setViewportWidth] = useState<number>(0);
   const { finalMenuItem } = useFinalMenuItem()
 
   // change the word fade for either background or title
@@ -38,8 +38,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   }
 
   useEffect(() => {
-  // Ensure this code is only executed on the client-side,
-  // window object is not available on the server-side
+
     if (typeof window !== 'undefined') {
       setViewportWidth(window.innerWidth);
 

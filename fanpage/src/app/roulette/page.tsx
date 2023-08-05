@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Spinner from "../components/Spinner";
 import Results from '../components/SpinnerResult'
 import { FinalMenuItemProvider } from "../contexts/SpinnerResultContext";
@@ -13,6 +14,9 @@ export default function RoulettePage() {
             <p className="text-3xl">Olive Garden&apos;s Roulette of Culinary Treasures</p>
           </section>
           <Results />
+          <section >
+            <Footer />
+          </section>
         </div>
       </FinalMenuItemProvider>
   )

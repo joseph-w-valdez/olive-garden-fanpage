@@ -67,7 +67,7 @@ export default function Spinner() {
   const titleAnimation = lidCovered ? 'animate-title-out' : 'animate-title-in'
 
   return (
-    <section className="relative flex flex-wrap justify-center items-center">
+    <div className="relative flex flex-wrap justify-center items-center h-[calc(100vh-3rem)]">
       <div className="relative left-0 w-full h-full overflow-hidden">
         <Image
           className="w-full max-w-[1250px] h-full max-h-[1000px]"
@@ -92,6 +92,6 @@ export default function Spinner() {
         <h1 className="text-2xl">Savor The Unexpected</h1>
         <p className="text-base">Olive Garden&apos;s Roulette of Culinary Treasures</p>
       </div>
-    </section>
+    </div>
   );
 }

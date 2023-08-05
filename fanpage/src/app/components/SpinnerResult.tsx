@@ -7,7 +7,7 @@ export default function Results() {
     const { finalMenuItem } = useFinalMenuItem();
 
     return (
-        <section className="w-full h-[100vh] bg-[#DDBEA9] text-black flex flex-col justify-center items-center text-left" id="spinner-result">
+        <div className="w-full h-[calc(100vh-3rem)] bg-[#DDBEA9] text-black flex flex-col justify-center items-center text-left" id="spinner-result">
             <div className="text-left flex flex-wrap px-12 w-full md:w-1/2 xl:w-1/3">
                 {finalMenuItem && (
                     <>
@@ -32,7 +32,7 @@ export default function Results() {
                         <p className="text-lg font-bold">Price: FREE UNLIMITED!!</p>
                     </>)}
             </div>
-        </section>
+        </div>
     );
 
 }

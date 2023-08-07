@@ -37,22 +37,24 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     return thirdIndex;
   }
 
-  useEffect(() => {
-  // This function will only be run on the client side,
-  // where 'window' is defined
-
-
-    // Ensure 'window' is defined before adding or removing any event listeners
+   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const handleWindowResize = () => {
       setViewportWidth(window.innerWidth);
-    };
-      window.addEventListener('resize', handleWindowResize);
-
-      return () => {
-        window.removeEventListener('resize', handleWindowResize);
-      };
     }
+  }, []);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      if (typeof window !== 'undefined') {
+        setViewportWidth(window.innerWidth);
+      }
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
   }, []);
 
   useEffect(() => {

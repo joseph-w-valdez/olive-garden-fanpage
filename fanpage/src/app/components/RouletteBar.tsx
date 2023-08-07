@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MenuItem } from '../types/MenuItem';
 import { useFinalMenuItem } from "../contexts/SpinnerResultContext"
+import { useThirdIndex } from '../hooks/useThirdIndex';
 
 type FadeAnimationType = 'animate-fade-in' | 'animate-fade-out';
 
@@ -27,16 +28,6 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     setDuplicatedItems([...items, ...items, ...items, ...items]);
   }, [items])
 
-  const getThirdMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
-    if (!itemToFind) return -1;
-    const firstIndex = items.findIndex(item => item === itemToFind);
-    if (firstIndex === -1) return -1;
-    const secondIndex = items.findIndex((item, index) => index > firstIndex && item === itemToFind);
-    if (secondIndex === -1) return -1;
-    const thirdIndex = items.findIndex((item, index) => index > secondIndex && item === itemToFind);
-    return thirdIndex;
-  }
-
    useEffect(() => {
     if (typeof window !== 'undefined') {
       setViewportWidth(window.innerWidth);
@@ -54,7 +45,10 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     }
   }, []);
 
+  const thirdIndex = useThirdIndex(items, finalMenuItem);
+
   useEffect(() => {
+
     // Reset the matched position to the starting position
     setTransitionDelay(0);
     setTimeout(() => {
@@ -85,8 +79,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
 
       const handleResize = () => {
         const refinementFactor = getRefinementFactor();
-        const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
-        const rightPosition = (index - refinementFactor) * 22;
+        const rightPosition = (thirdIndex - refinementFactor) * 22;
         setTransitionDelay(1500);
         setTransitionDuration(3000);
         setMatchedPosition(rightPosition);
@@ -96,7 +89,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
         handleResize();
       }, 1500);
     }
-  }, [duplicatedItems, finalMenuItem, viewportWidth]);
+  }, [duplicatedItems, finalMenuItem, viewportWidth, thirdIndex]);
 
 
   return (

@@ -40,10 +40,10 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   useEffect(() => {
 
     if (typeof window !== 'undefined') {
-      setViewportWidth(window.innerWidth);
+      setViewportWidth(0);
 
       const handleWindowResize = () => {
-        setViewportWidth(window.innerWidth);
+        setViewportWidth(0);
       };
 
       window.addEventListener('resize', handleWindowResize);

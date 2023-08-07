@@ -24,13 +24,17 @@ export default function Results() {
                     </>
                 )}
                 {!finalMenuItem && (
-                    <>
-                        <Image src={Breadsticks} alt="breadsticks" />
-                        <h1 className="text-4xl">Unlimited Breadsticks!</h1>
-                        <h3 className="text-md italic">Appetizer</h3>
-                        <p className="text-lg">Our breadsticks are heated up in the microwave by the hundreds.</p>
-                        <p className="text-lg font-bold">Price: FREE UNLIMITED!!</p>
-                    </>)}
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="w-64">
+                            <Image src={Breadsticks} alt="breadsticks" />
+                        </div>
+                        <div className="w-[80%] text-center">
+                            <h1 className="text-xl">Unlimited Breadsticks!</h1>
+                            <h3 className="text-md italic">Appetizer</h3>
+                            <p className="text-lg">Our breadsticks are heated up in the microwave by the hundreds.</p>
+                            <p className="text-lg font-bold">Price: FREE UNLIMITED!!</p>
+                        </div>
+                    </div>)}
             </div>
         </div>
     );

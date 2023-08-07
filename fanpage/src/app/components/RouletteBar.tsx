@@ -45,7 +45,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     }
   }, []);
 
-  const thirdIndex = useThirdIndex(items, finalMenuItem);
+  const thirdIndex = useThirdIndex(() => duplicatedItems, finalMenuItem);
 
   useEffect(() => {
 

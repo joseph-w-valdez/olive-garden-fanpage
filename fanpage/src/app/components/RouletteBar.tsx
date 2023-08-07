@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MenuItem } from '../types/MenuItem';
 import { useFinalMenuItem } from "../contexts/SpinnerResultContext"
+import { useThirdIndex } from '../hooks/useThirdIndex';
 
 type FadeAnimationType = 'animate-fade-in' | 'animate-fade-out';
 
@@ -16,7 +17,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   const [matchedPosition, setMatchedPosition] = useState<number>(0);
   const [transitionDelay, setTransitionDelay] = useState<number>(0);
   const [transitionDuration, setTransitionDuration] = useState<number>(0);
-  const [viewportWidth, setViewportWidth] = useState<number>(window.innerWidth);
+  const [viewportWidth, setViewportWidth] = useState<number>(0);
   const { finalMenuItem } = useFinalMenuItem()
 
   // change the word fade for either background or title
@@ -27,29 +28,27 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     setDuplicatedItems([...items, ...items, ...items, ...items]);
   }, [items])
 
-  const getThirdMatchingIndex = (items: MenuItem[], itemToFind: MenuItem | null): number => {
-    if (!itemToFind) return -1;
-    const firstIndex = items.findIndex(item => item === itemToFind);
-    if (firstIndex === -1) return -1;
-    const secondIndex = items.findIndex((item, index) => index > firstIndex && item === itemToFind);
-    if (secondIndex === -1) return -1;
-    const thirdIndex = items.findIndex((item, index) => index > secondIndex && item === itemToFind);
-    return thirdIndex;
-  }
-
-  useEffect(() => {
-    const handleWindowResize = () => {
+   useEffect(() => {
+    if (typeof window !== 'undefined') {
       setViewportWidth(window.innerWidth);
-    };
 
-    window.addEventListener('resize', handleWindowResize);
+      const handleWindowResize = () => {
+        setViewportWidth(window.innerWidth);
+      };
 
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
+      window.addEventListener('resize', handleWindowResize);
+
+      // Cleanup the event listener on unmount
+      return () => {
+        window.removeEventListener('resize', handleWindowResize);
+      };
+    }
   }, []);
 
+  const thirdIndex = useThirdIndex(() => duplicatedItems, finalMenuItem);
+
   useEffect(() => {
+
     // Reset the matched position to the starting position
     setTransitionDelay(0);
     setTimeout(() => {
@@ -61,8 +60,11 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
 
   // TO-DO: make responsive up to 4100 px vw
   // calculate a refinement factor to center the selected dish to be underneath the cover
-  const getRefinementFactor = (): number => {
-    if (viewportWidth <= 1200) {
+
+  if (typeof window !== 'undefined') {
+
+   const getRefinementFactor = (): number => {
+    if (viewportWidth > 0 && viewportWidth <= 1200) {
       return 2.2;
     } else if (viewportWidth <= 1920) {
       const upperResolution = 1920
@@ -75,21 +77,19 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     }
   };
 
-    const handleResize = () => {
-      const refinementFactor = getRefinementFactor()
-      const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
-      const rightPosition = (index - refinementFactor) * 22;
-      setTransitionDelay(1500);
-      setTransitionDuration(3000);
-      setMatchedPosition(rightPosition);
-    };
+      const handleResize = () => {
+        const refinementFactor = getRefinementFactor();
+        const rightPosition = (thirdIndex - refinementFactor) * 22;
+        setTransitionDelay(1500);
+        setTransitionDuration(3000);
+        setMatchedPosition(rightPosition);
+      };
 
-    // Wait a bit to give time to render the reset position
-    setTimeout(() => {
-      handleResize()
-    }, 1500);
-
-  }, [duplicatedItems, finalMenuItem, viewportWidth]);
+      setTimeout(() => {
+        handleResize();
+      }, 1500);
+    }
+  }, [duplicatedItems, finalMenuItem, viewportWidth, thirdIndex]);
 
 
   return (

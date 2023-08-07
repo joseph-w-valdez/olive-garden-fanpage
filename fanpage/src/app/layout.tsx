@@ -24,7 +24,7 @@ export default function RootLayout({
         <SidebarProvider>
           <SideBar />
           <Navbar />
-          <main className='mt-12 h-[calc(100vh-3rem)] snap-y snap-mandatory overflow-y-scroll'>{children}</main>
+          <main className='mt-12 h-[calc(100vh-3rem)]'>{children}</main>
         </SidebarProvider>
       </body>
     </html>

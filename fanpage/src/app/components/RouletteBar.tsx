@@ -66,7 +66,10 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
 
   // TO-DO: make responsive up to 4100 px vw
   // calculate a refinement factor to center the selected dish to be underneath the cover
-  const getRefinementFactor = (): number => {
+
+  if (typeof window !== 'undefined') {
+
+   const getRefinementFactor = (): number => {
     if (viewportWidth <= 1200) {
       return 2.2;
     } else if (viewportWidth <= 1920) {
@@ -80,20 +83,19 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     }
   };
 
-    const handleResize = () => {
-      const refinementFactor = getRefinementFactor()
-      const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
-      const rightPosition = (index - refinementFactor) * 22;
-      setTransitionDelay(1500);
-      setTransitionDuration(3000);
-      setMatchedPosition(rightPosition);
-    };
+      const handleResize = () => {
+        const refinementFactor = getRefinementFactor();
+        const index = getThirdMatchingIndex(duplicatedItems, finalMenuItem);
+        const rightPosition = (index - refinementFactor) * 22;
+        setTransitionDelay(1500);
+        setTransitionDuration(3000);
+        setMatchedPosition(rightPosition);
+      };
 
-    // Wait a bit to give time to render the reset position
-    setTimeout(() => {
-      handleResize()
-    }, 1500);
-
+      setTimeout(() => {
+        handleResize();
+      }, 1500);
+    }
   }, [duplicatedItems, finalMenuItem, viewportWidth]);
 
 

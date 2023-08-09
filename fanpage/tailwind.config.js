@@ -7,18 +7,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-       animation: {
+      animation: {
         'background-in': 'fadeInBackground 800ms forwards',
         'background-out': 'fadeOutBackground 800ms forwards',
         'title-in': 'fadeInTitle 800ms forwards',
         'title-out': 'fadeOutTitle 800ms forwards',
         'fade-in': 'fadeIn 800ms forwards',
         'fade-out': 'fadeOut 800ms forwards',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       height: {
         'minus-navbar': 'calc(100vh - 3rem)',

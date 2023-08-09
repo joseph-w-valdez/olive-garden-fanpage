@@ -45,7 +45,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
     }
   }, []);
 
-  const thirdIndex = useThirdIndex(items, finalMenuItem);
+  const thirdIndex = useThirdIndex(() => duplicatedItems, finalMenuItem);
 
   useEffect(() => {
 
@@ -64,7 +64,7 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
   if (typeof window !== 'undefined') {
 
    const getRefinementFactor = (): number => {
-    if (viewportWidth <= 1200) {
+    if (viewportWidth > 0 && viewportWidth <= 1200) {
       return 2.2;
     } else if (viewportWidth <= 1920) {
       const upperResolution = 1920

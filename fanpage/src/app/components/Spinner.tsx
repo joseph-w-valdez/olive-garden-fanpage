@@ -67,7 +67,7 @@ export default function Spinner() {
   const titleAnimation = lidCovered ? 'animate-title-out' : 'animate-title-in'
 
   return (
-    <div className="relative flex flex-wrap justify-center items-center h-[calc(100vh-3rem)]">
+    <div className="relative flex flex-wrap justify-center items-center h-minus-navbar">
       <div className="relative left-0 w-full h-full overflow-hidden">
         <Image
           className="w-full max-w-[1250px] h-full max-h-[1000px]"

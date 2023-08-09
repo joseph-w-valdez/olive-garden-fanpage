@@ -20,6 +20,12 @@ module.exports = {
         'fade-in': 'fadeIn 800ms forwards',
         'fade-out': 'fadeOut 800ms forwards',
       },
+      height: {
+        'minus-navbar': 'calc(100vh - 3rem)',
+      },
+       screens: {
+        'landscape-sm': { 'raw': '(orientation: landscape) and (max-width: 999px)' },
+      },
     },
   },
   plugins: [],

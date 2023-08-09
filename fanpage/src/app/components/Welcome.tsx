@@ -7,7 +7,7 @@ export default function Welcome() {
             <h1>Welcome Home!</h1>
             <p className="text-xl mt-3">Where Family, Friends, and Flavor Meet</p>
             <div className="w-full max-w-[1400px] h-fit landscape-sm:w-1/2 pt-6">
-                <Image 
+                <Image
                     src={placeholder}
                     alt='placeholder'
                     width={0}

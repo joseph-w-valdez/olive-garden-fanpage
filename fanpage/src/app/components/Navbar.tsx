@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
                     <Link href={link.href} key={index}><span>{link.name}</span></Link>
                 ))}
             </div>
-            <RxHamburgerMenu className="ml-8 border border-black text-xl p-1 rounded-md lg:hidden" onClick={handleMenuToggle} />
+            <RxHamburgerMenu className="ml-8 border border-black text-3xl p-1 rounded-md lg:hidden" onClick={handleMenuToggle} />
         </nav>
     )
 }

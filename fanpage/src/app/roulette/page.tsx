@@ -13,7 +13,9 @@ export default function RoulettePage() {
             <h1 className="text-5xl my-10">Savor The Unexpected</h1>
             <p className="text-3xl">Olive Garden&apos;s Roulette of Culinary Treasures</p>
           </section>
-          <Results />
+          <section>
+            <Results />
+          </section>
           <section >
             <Footer />
           </section>

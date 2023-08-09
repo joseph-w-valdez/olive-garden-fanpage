@@ -10,6 +10,8 @@ module.exports = {
       animation: {
         'background-in': 'fadeInBackground 800ms forwards',
         'background-out': 'fadeOutBackground 800ms forwards',
+        'background-in-mobile': 'fadeInBackgroundMobile 800ms forwards',
+        'background-out-mobile': 'fadeOutBackgroundMobile 800ms forwards',
         'title-in': 'fadeInTitle 800ms forwards',
         'title-out': 'fadeOutTitle 800ms forwards',
         'fade-in': 'fadeIn 800ms forwards',

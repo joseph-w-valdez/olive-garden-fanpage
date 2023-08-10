@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
 
     return (
         <nav className='w-full bg-[#F4BE69] h-12 flex justify-center items-center fixed top-0 z-10'>
-            <Link href="/" className='text-black lora w-3/4 text-center pl-16 text-lg 375:text-xl lg:text-start lg:pl-10'>
+            <Link href="/" className='text-black lora text-center text-lg 375:text-xl lg:text-start'>
                 <span className="mr-2">Garden Delights</span>
                 <Image className="inline w-[30px] h-[30px] 375:w-[35px] 375:h-[35px]" src="/assets/images/icon.png" width='0' height='0' sizes='100vw' alt="icon" />
             </Link>
@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
                     <Link href={link.href} key={index}><span>{link.name}</span></Link>
                 ))}
             </div>
-            <RxHamburgerMenu className="ml-8 border border-black text-3xl p-1 rounded-md lg:hidden" onClick={handleMenuToggle} />
+            <RxHamburgerMenu className="absolute right-0 mr-4 border border-black text-3xl rounded-md lg:hidden" onClick={handleMenuToggle} />
         </nav>
     )
 }

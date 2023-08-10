@@ -72,14 +72,12 @@ export default function Spinner() {
         <Image
           className="w-full max-w-[1700px] h-full max-h-[calc(100vh-3rem)]"
           src={WaiterBackground}
-          objectFit="cover"
           alt="Background Waiter Image"
         />
         <Image
           ref={lidRef}
           className="w-full max-w-[1700px] h-full absolute top-0"
           src={DishLid}
-          objectFit="cover"
           alt="Dish Lid"
         />
         <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} />

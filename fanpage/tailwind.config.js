@@ -26,6 +26,7 @@ module.exports = {
         'minus-navbar': 'calc(100vh - 3rem)',
       },
        screens: {
+        '375': '375px',
         'landscape-sm': { 'raw': '(orientation: landscape) and (max-width: 999px)' },
       },
     },

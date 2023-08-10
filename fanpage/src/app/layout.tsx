@@ -24,7 +24,7 @@ export default function RootLayout({
         <SidebarProvider>
           <SideBar />
           <Navbar />
-          <main className='mt-12 h-minus-navbar landscape:h-fit'>{children}</main>
+          <main className='mt-12 h-minus-navbar landscape-sm:h-fit'>{children}</main>
         </SidebarProvider>
       </body>
     </html>

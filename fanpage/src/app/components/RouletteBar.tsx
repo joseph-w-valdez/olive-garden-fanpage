@@ -94,9 +94,9 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
 
   return (
     <>
-      <div className={`w-full h-[13%] top-[33%] md:top-[26%] landscape:top-[26%] md:h-[26%] landscape:h-[27%] absolute  bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
+      <div className={`w-full h-[26%] top-[26%] absolute bg-black transition duration-150 ease-linear ${barAnimation}`}></div>
       <div
-        className={`h-[13%] md:h-[26%] landscape:h-[26%] absolute top-[26%] md:top-[12%] landscape:top-[12%] left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
+        className={`h-[26%] absolute top-[12%]  left-0 transition delay-[${transitionDelay}ms] ease-linear flex`}
         style={{
           transform: `translateX(-${matchedPosition}vw)`,
           transitionDuration: `${transitionDuration}ms`

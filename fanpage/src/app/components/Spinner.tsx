@@ -67,17 +67,17 @@ export default function Spinner() {
   const titleAnimation = lidCovered ? 'animate-title-out' : 'animate-title-in'
 
   return (
-    <div className="relative flex flex-wrap justify-center items-center h-minus-navbar">
-      <div className="relative left-0 w-full h-full overflow-hidden">
+    <div className="relative flex flex-wrap justify-center items-center h-auto">
+      <div className="relative w-full h-full overflow-hidden">
         <Image
-          className="w-full max-w-[1250px] h-full max-h-[1000px]"
+          className="w-full max-w-[1400px] h-full max-h-[1500px]"
           src={WaiterBackground}
           objectFit="cover"
           alt="Background Waiter Image"
         />
         <Image
           ref={lidRef}
-          className="w-full max-w-[1250px] h-full max-h-[1000px] absolute top-0"
+          className="w-full max-w-[1400px] h-full absolute top-0"
           src={DishLid}
           objectFit="cover"
           alt="Dish Lid"

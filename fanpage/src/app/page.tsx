@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 export default function Home() {
   return (
     <div className='snap-y h-minus-navbar snap-mandatory overflow-y-scroll'>
-      <section className="bg-white w-full h-minus-navbar landscape:h-fit flex items-center justify-center text-8xl lg:snap-start lg:snap-always lg:w-full">
+      <section className="bg-white w-full h-minus-navbar landscape-sm:h-fit flex items-center justify-center text-8xl lg:snap-start lg:snap-always lg:w-full">
         <Image
           src={logo} alt="logo"
           width={0} height={0} sizes='100vw'

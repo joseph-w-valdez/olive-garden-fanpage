@@ -2,7 +2,7 @@ export const moveLidUp = (backgroundRef: React.RefObject<HTMLImageElement>, setL
     if (backgroundRef.current) {
         const translation = window.innerWidth > window.innerHeight
             ? "-25%" // Landscape orientation
-            : "-12%"; // Portrait orientation
+            : "-25%"; // Portrait orientation
         backgroundRef.current.style.transform = `translateY(${translation})`;
         setLidCovered(false);
     }

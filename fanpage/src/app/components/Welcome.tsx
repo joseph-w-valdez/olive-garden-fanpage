@@ -6,7 +6,7 @@ export default function Welcome() {
         <section className="flex flex-col items-center text-center red-hat text-3xl mt-5 lg:h-minus-navbar">
             <h1>Welcome Home!</h1>
             <p className="text-xl mt-3">Where Family, Friends, and Flavor Meet</p>
-            <div className="w-full max-w-[1000px] h-fit pt-6">
+            <div className="w-full max-w-[800px] h-fit pt-6">
                 <Image
                     src={vin}
                     alt='vin welcomes you to the family'

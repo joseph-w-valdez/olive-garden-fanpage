@@ -9,8 +9,8 @@ export default function RoulettePage() {
       <FinalMenuItemProvider>
         <div className="relative bg-white w-full flex flex-col item-center justify-center">
           <Spinner />
-          <section className="bg-[#404040] text-center text-white px-6 py-6 block lg:hidden lora">
-            <h1 className="text-5xl my-4">Savor The Unexpected</h1>
+          <section className="bg-[#404040] text-center text-white px-6 py-6 block lg:hidden">
+            <h1 className="text-5xl my-4 lora">Savor The Unexpected</h1>
             <p className="text-xl red-hat">Olive Garden&apos;s Roulette of Culinary Treasures</p>
           </section>
           <section>

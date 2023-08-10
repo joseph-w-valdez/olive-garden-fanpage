@@ -9,12 +9,12 @@ const Navbar: React.FC = () => {
     const { handleMenuToggle } = useSidebarContext()
 
     return (
-        <nav className='w-full bg-[#F4BE69] h-12 flex justify-center items-center fixed top-0 z-10'>
+        <nav className='w-full bg-[#F4BE69] h-12 flex justify-center lg:justify-between items-center fixed top-0 z-10 lg:px-5'>
             <Link href="/" className='text-black lora text-center text-lg 375:text-xl lg:text-start'>
                 <span className="mr-2">Garden Delights</span>
                 <Image className="inline w-[30px] h-[30px] 375:w-[35px] 375:h-[35px]" src="/assets/images/icon.png" width='0' height='0' sizes='100vw' alt="icon" />
             </Link>
-            <div className="lugra hidden lg:w-1/2 lg:flex lg:justify-evenly">
+            <div className="lugra hidden lg:w-1/2 lg:flex lg:justify-end lg:gap-x-4">
                 {links.map((link, index) => (
                     <Link href={link.href} key={index}><span>{link.name}</span></Link>
                 ))}

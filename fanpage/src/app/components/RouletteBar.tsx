@@ -66,14 +66,41 @@ const RouletteBar: React.FC<RouletteBarProps> = ({ fadeAnimation, items }) => {
    const getRefinementFactor = (): number => {
     if (viewportWidth > 0 && viewportWidth <= 1200) {
       return 2.2;
-    } else if (viewportWidth <= 1920) {
-      const upperResolution = 1920
+    } else if (viewportWidth <= 1400) {
+      const upperResolution = 1400
       const lowerResolution = 1200
       // Linearly interpolate between 2.2 and 1.25 for values between 1200 and 1920
-      const scalingModifier = (1.25 - 2.2) / (upperResolution - lowerResolution);
+      const scalingModifier = (2.1 - 2.2) / (upperResolution - lowerResolution);
       return scalingModifier * (viewportWidth - 1200) + 2.2;
+    } else if (viewportWidth <= 1600) {
+      return 2.1
+    } else if (viewportWidth <= 1920) {
+      const upperResolution = 1920
+      const lowerResolution = 1600
+      const scalingModifier = (1.85 - 2.1) / (upperResolution - lowerResolution);
+      return scalingModifier * (viewportWidth - 1600) + 2.1;
+    } else if (viewportWidth <= 2540) {
+      const upperResolution = 2540
+      const lowerResolution = 1920
+      const scalingModifier = (1.3 - 1.85) / (upperResolution - lowerResolution);
+      return scalingModifier * (viewportWidth - 1920) + 1.85;
+    } else if (viewportWidth <= 3024) {
+      const upperResolution = 3024
+      const lowerResolution = 2540
+      const scalingModifier = (0.95 - 1.3) / (upperResolution - lowerResolution);
+      return scalingModifier * (viewportWidth - 2540) + 1.3;
+    } else if (viewportWidth <= 3300) {
+      const upperResolution = 3300
+      const lowerResolution = 3024
+      const scalingModifier = (0.9 - 0.95) / (upperResolution - lowerResolution);
+      return scalingModifier * (viewportWidth - 3024) + 0.95;
+    } else if (viewportWidth <= 4096) {
+      const upperResolution = 3800
+      const lowerResolution = 3300
+      const scalingModifier = (0.75 - 0.9) / (upperResolution - lowerResolution);
+      return scalingModifier * (viewportWidth - 3300) + 0.9;
     } else {
-      return 0.4
+      return 1
     }
   };
 

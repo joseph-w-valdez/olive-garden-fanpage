@@ -11,7 +11,7 @@ export default function Results() {
             <div className="text-left flex flex-wrap px-12 w-full md:w-1/2 xl:w-1/3 landscape-sm:w-full">
                 {finalMenuItem && (
                     <div className="flex flex-col landscape-sm:flex-row justify-center landscape-sm:justify-between items-center">
-                        <div className="w-full landscape-sm:w-1/2 landscape-sm:max-w-[50vw]">
+                        <div className="w-full landscape-sm:w-1/2 landscape-sm:max-w-[50vw] flex justify-center">
                             <Image
                                 src={finalMenuItem.image} alt={finalMenuItem.alt}
                                 width={580} height={580} sizes="100vw"
@@ -29,7 +29,7 @@ export default function Results() {
                 )}
                 {!finalMenuItem && (
                     <div className="flex flex-col landscape-sm:flex-row lg:flex-col justify-center landscape-sm:justify-between items-center">
-                        <div className="w-full landscape-sm:w-1/2 mx-2">
+                        <div className="flex justify-center w-full landscape-sm:w-1/2 mx-2">
                             <Image
                                 src={Breadsticks} alt='breadsticks'
                                 height={0} width={0} sizes='100vw'

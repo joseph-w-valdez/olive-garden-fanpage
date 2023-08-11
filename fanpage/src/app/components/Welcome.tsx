@@ -1,12 +1,22 @@
 import Image from "next/image"
-import placeholder from "../assets/images/vin.jpeg"
+import vin from "../assets/images/vin.jpeg"
 
 export default function Welcome() {
     return (
-        <section className="text-center red-hat text-3xl mt-5 h-[calc(100vh-3rem)]">
+        <section className="flex flex-col items-center text-center red-hat text-3xl mt-5 lg:h-minus-navbar">
             <h1>Welcome Home!</h1>
             <p className="text-xl mt-3">Where Family, Friends, and Flavor Meet</p>
-            <Image src={placeholder} alt='placeholder' className="px-5 mt-5 lg:w-3/4 lg:h-3/4 lg:mx-auto" />
+            <div className="w-full max-w-[800px] h-fit pt-6">
+                <Image
+                    src={vin}
+                    alt='vin welcomes you to the family'
+                    width={0}
+                    height={0}
+                    sizes='100vw'
+                    className="object-cover"
+                    priority
+                />
+            </div>
         </section>
     )
 }

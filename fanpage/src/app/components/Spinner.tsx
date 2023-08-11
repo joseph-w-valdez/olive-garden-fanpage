@@ -67,19 +67,17 @@ export default function Spinner() {
   const titleAnimation = lidCovered ? 'animate-title-out' : 'animate-title-in'
 
   return (
-    <div className="relative flex flex-wrap justify-center items-center h-[calc(100vh-3rem)]">
-      <div className="relative left-0 w-full h-full overflow-hidden">
+    <div className="relative flex flex-wrap justify-center items-center h-auto">
+      <div className="relative w-full h-full overflow-hidden">
         <Image
-          className="w-full max-w-[1250px] h-full max-h-[1000px]"
+          className="w-full max-w-[1700px] h-full max-h-[calc(100vh-3rem)]"
           src={WaiterBackground}
-          objectFit="cover"
           alt="Background Waiter Image"
         />
         <Image
           ref={lidRef}
-          className="w-full max-w-[1250px] h-full max-h-[1000px] absolute top-0"
+          className="w-full max-w-[1700px] h-full absolute top-0"
           src={DishLid}
-          objectFit="cover"
           alt="Dish Lid"
         />
         <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} />
@@ -89,8 +87,8 @@ export default function Spinner() {
       </div>
       <RouletteButton waiting={isWaiting} click={handleButtonClick} />
       <div className="absolute text-center bottom-[10%] right-[5rem] text-black hidden lg:block">
-        <h1 className="text-2xl">Savor The Unexpected</h1>
-        <p className="text-base">Olive Garden&apos;s Roulette of Culinary Treasures</p>
+        <h1 className="text-4xl lora">Savor The Unexpected</h1>
+        <p className="text-xl red-hat">Olive Garden&apos;s Roulette of Culinary Treasures</p>
       </div>
     </div>
   );

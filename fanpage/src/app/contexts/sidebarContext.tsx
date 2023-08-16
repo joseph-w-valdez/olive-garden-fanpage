@@ -8,7 +8,7 @@ interface SidebarContextType {
 
 const SidebarContext = createContext<SidebarContextType>({
   isOpen: false,
-  handleMenuToggle: () => {},
+  handleMenuToggle: () => { },
 });
 
 export const useSidebarContext = () => useContext(SidebarContext);

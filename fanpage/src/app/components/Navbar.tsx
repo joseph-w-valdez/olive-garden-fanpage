@@ -4,9 +4,11 @@ import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
 import links from "../data/links"
 import { useSidebarContext } from "../contexts/sidebarContext";
+import { useAuthContext } from "../contexts/AuthContext";
 
 const Navbar: React.FC = () => {
     const { handleMenuToggle } = useSidebarContext()
+    const { userData, handleSignOut } = useAuthContext()
 
     return (
         <nav className='w-full bg-[#F4BE69] h-12 flex justify-center lg:justify-between items-center fixed top-0 z-10 lg:px-5'>
@@ -16,7 +18,13 @@ const Navbar: React.FC = () => {
             </Link>
             <div className="lugra hidden lg:w-1/2 lg:flex lg:justify-end lg:gap-x-4">
                 {links.map((link, index) => (
-                    <Link href={link.href} key={index}><span>{link.name}</span></Link>
+                    <div key={index}>
+                        {userData && link.name === 'Login' ? (
+                            <Link href='/login' onClick={handleSignOut}>Log Out</Link>
+                        ) : (
+                            <Link href={link.href}>{link.name}</Link>
+                        )}
+                    </div>
                 ))}
             </div>
             <RxHamburgerMenu className="absolute right-0 mr-4 border border-black text-3xl rounded-md lg:hidden" onClick={handleMenuToggle} />

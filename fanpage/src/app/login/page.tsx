@@ -1,38 +1,40 @@
 'use client'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, UserCredential } from 'firebase/auth';
 import app from '../data/firebaseConfig';
+import { useAuthContext } from '../contexts/AuthContext';
+
 
 const SignInForm: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const { userData, setUserData } = useAuthContext()
+    const router = useRouter()
 
-    // For checking to see if user is logged in
-    const [loggedIn, setLoggedIn] = useState(false)
-
-    const handleSignIn = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+    const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         const auth = getAuth(app);
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Successfully signed in
-                const user = userCredential.user;
-                console.log(auth.currentUser)
-                setEmail('');
-                setPassword('');
-                setError('');
-                setLoggedIn(!loggedIn)
-                // Handle successful sign-in, e.g., redirect
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setError(errorMessage);
-            });
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log(user.accessToken);
+            setUserData(user);
+            setEmail('');
+            setPassword('');
+            setError('');
+            router.push('/')
+
+        } catch (error: any) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setError(errorMessage);
+        }
     };
+
 
     return (
         <form className='h-[80vh] flex flex-col justify-center' onSubmit={handleSignIn}>
@@ -76,7 +78,7 @@ const SignInForm: React.FC = () => {
             </div>
             {/* Checking to see if user logged in */}
             {error && <p>Error: {error}</p>}
-            {loggedIn && <p>Logged in: success</p>}
+            {userData && <p>Logged in: success</p>}
         </form>
 
     );

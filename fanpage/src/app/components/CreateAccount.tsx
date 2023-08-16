@@ -15,7 +15,7 @@ const CreateAccount: React.FC = () => {
             const user = userCredential.user;
             console.log(userCredential)
             // Do something with the signed-up user
-        } catch (error) {
+        } catch (error: any) {
             const errorCode = error.code;
             const errorMessage = error.message;
             setError(errorMessage);

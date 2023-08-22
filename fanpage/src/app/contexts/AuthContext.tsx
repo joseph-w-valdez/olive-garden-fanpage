@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react"
 import { getAuth, signOut } from 'firebase/auth';
 import app from "../data/firebaseConfig"
 
+
 interface AuthContextType {
     userData: any;
     setUserData: React.Dispatch<React.SetStateAction<any>>;

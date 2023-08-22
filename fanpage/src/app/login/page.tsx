@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getAuth, signInWithEmailAndPassword, UserCredential } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, UserCredential, } from 'firebase/auth';
 import app from '../data/firebaseConfig';
 import { useAuthContext } from '../contexts/AuthContext';
 
@@ -21,7 +21,6 @@ const SignInForm: React.FC = () => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            console.log(user.accessToken);
             setUserData(user);
             setEmail('');
             setPassword('');
@@ -34,6 +33,7 @@ const SignInForm: React.FC = () => {
             setError(errorMessage);
         }
     };
+
 
 
     return (

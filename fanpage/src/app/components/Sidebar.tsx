@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
                     <div key={index} className="w-full mb-10">
                         {userData && link.name === 'Login' ? (
                             <>
-                                <Link href={'/login'} key={index} onClick={() => { handleMenuToggle(); handleSignOut(); }}>Log Out</Link>
+                                <Link href='/favoriteDishes' onClick={handleMenuToggle}>Favorites</Link>
                                 <hr className="w-full mt-3 border-t-2 border-black"></hr>
                             </>
                         ) : (
@@ -32,6 +32,13 @@ const Sidebar: React.FC = () => {
                         )}
                     </div>
                 ))}
+                {userData ? (
+                    <>
+                        <Link href={'/login'} onClick={() => { handleMenuToggle(); handleSignOut(); }}>Log Out</Link>
+                        <hr className="w-full mt-3 border-t-2 border-black"></hr>
+                    </>
+                ) : ('')
+                }
             </div>
         </div>
     )

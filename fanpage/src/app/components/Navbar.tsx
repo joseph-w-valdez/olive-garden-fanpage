@@ -20,12 +20,17 @@ const Navbar: React.FC = () => {
                 {links.map((link, index) => (
                     <div key={index}>
                         {userData && link.name === 'Login' ? (
-                            <Link href='/login' onClick={handleSignOut}>Log Out</Link>
+                            <Link href='/favoriteDishes'>Favorites</Link>
                         ) : (
                             <Link href={link.href}>{link.name}</Link>
                         )}
                     </div>
                 ))}
+                {userData ? (
+                    <Link href='/login' onClick={handleSignOut}>Log Out</Link>
+                ) : (
+                    ''
+                )}
             </div>
             <RxHamburgerMenu className="absolute right-0 mr-4 border border-black text-3xl rounded-md lg:hidden" onClick={handleMenuToggle} />
         </nav>

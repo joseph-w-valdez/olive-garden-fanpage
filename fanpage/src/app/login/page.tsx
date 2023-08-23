@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getAuth, signInWithEmailAndPassword, UserCredential, } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, UserCredential, onAuthStateChanged } from 'firebase/auth';
 import app from '../data/firebaseConfig';
 import { useAuthContext } from '../contexts/AuthContext';
 
@@ -17,6 +17,11 @@ const SignInForm: React.FC = () => {
     const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (currentUser) => {
+            setUserData(currentUser)
+            console.log(currentUser)
+        })
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -37,9 +42,9 @@ const SignInForm: React.FC = () => {
 
 
     return (
-        <form className='h-[80vh] flex flex-col justify-center' onSubmit={handleSignIn}>
-            <div className='flex flex-col mx-5 rounded-xl justify-center bg-white py-5'>
-                <div className='flex flex-col w-[80%] mx-auto'>
+        <form className='h-[80vh] flex flex-col justify-center md:w-3/4 md:mx-auto lg:w-1/2' onSubmit={handleSignIn}>
+            <div className='flex flex-col mx-5 rounded-xl justify-center bg-white py-5 lg:h-1/2'>
+                <div className='flex flex-col w-[80%] mx-auto md:mb-5'>
                     <label htmlFor="email" className='py-2'>Username</label>
                     <input
                         type="email"

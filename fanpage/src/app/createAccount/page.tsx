@@ -26,12 +26,12 @@ const CreateAccount: React.FC = () => {
     };
 
     return (
-        <form className='h-[80vh] flex flex-col justify-center' onSubmit={handleSignUp}>
+        <form className='h-[80vh] flex flex-col justify-center md:w-3/4 md:mx-auto lg:w-1/2' onSubmit={handleSignUp}>
             <div className='text-center mb-4 text-lg font-bold'>
-                <h1>Create Account</h1>
+                <h1 className='md:text-2xl'>Create Account</h1>
             </div>
-            <div className='flex flex-col mx-5 rounded-xl justify-center bg-white py-5'>
-                <div className='flex flex-col w-[80%] mx-auto'>
+            <div className='flex flex-col mx-5 rounded-xl justify-center bg-white py-5 lg:h-1/2'>
+                <div className='flex flex-col w-[80%] mx-auto md:mb-5'>
                     <label htmlFor="username" className='py-2'>Username</label>
                     <input
                         type="email"

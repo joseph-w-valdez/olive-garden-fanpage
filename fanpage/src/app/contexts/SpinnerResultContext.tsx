@@ -1,6 +1,8 @@
 'use client'
 import React, { useState, createContext, useContext, ReactNode } from "react";
 import { MenuItem } from "../types/MenuItem";
+import { LoggedOutProvider, useLoggedOutContext } from "./LoggedOutContext";
+import { Bars } from 'react-loading-icons'
 
 interface FinalMenuItemContextType {
     finalMenuItem: MenuItem | null;

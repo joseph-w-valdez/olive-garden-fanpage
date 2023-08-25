@@ -34,7 +34,7 @@ const Sidebar: React.FC = () => {
                 ))}
                 {userData ? (
                     <>
-                        <Link href={'/login'} onClick={() => { handleMenuToggle(); handleSignOut(); }}>Log Out</Link>
+                        <div onClick={() => { handleMenuToggle(); handleSignOut(); }} className='cursor-pointer'>Log Out</div>
                         <hr className="w-full mt-3 border-t-2 border-black"></hr>
                     </>
                 ) : ('')

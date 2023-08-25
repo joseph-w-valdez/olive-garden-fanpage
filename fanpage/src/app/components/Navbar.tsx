@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
                     </div>
                 ))}
                 {userData ? (
-                    <Link href='/login' onClick={handleSignOut}>Log Out</Link>
+                    <div onClick={handleSignOut} className='cursor-pointer'>Log Out</div>
                 ) : (
                     ''
                 )}

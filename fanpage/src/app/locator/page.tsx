@@ -7,8 +7,8 @@ if (!googleApiKey) {
 ;}
 
 const containerStyle = {
-    width: '100%',
-    height: '1080px'
+    width: '50%',
+    height: '400px'
 };
 
 async function getLatLonforCity(city: string) {
@@ -24,6 +24,7 @@ async function getLatLonforCity(city: string) {
 export default function Locator() {
     const [searchText, setSearchText] = useState<string>('');
     const [isLoading, setIsLoading] = useState(Boolean);
+    const [mapCenter, setMapCenter] = useState({ lat:33.69383958039442, lng:-117.83629870284751});
     
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -38,14 +39,21 @@ export default function Locator() {
             return console.log('No search text?')
         }
         setIsLoading(true);
-
         try {
             const locationData = await getLatLonforCity(searchText);
             console.log(locationData);
+            if (isLoaded) {
+                setMapCenter({
+                    lat: locationData.lat,
+                    lng: locationData.lon,
+                })
+            }
         } catch (error) {
             console.error('Error fetching location data:', error);
         } finally {
-            setIsLoading(false);
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 2000);
             setSearchText('');
             if (inputRef.current) {
                 inputRef.current.focus();
@@ -53,16 +61,14 @@ export default function Locator() {
         }
         if (inputRef.current === null) return
         console.log('Submitted:', searchText);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 3000);
     };
 
     return (
         <>
-            <div className='w-full flex flex-col item-center justify-center'>
+            <div className='w-full h-auto flex flex-col item-center justify-center'>
                 <form onSubmit={handleSubmit}>
                     <input
+                        className='rounded-xl border-2 border-gray-400'
                         type="text"
                         required
                         ref={inputRef}
@@ -77,11 +83,11 @@ export default function Locator() {
                     </button>
                 </form>
             </div>
-            <div>
+            <div className='w-full flex flex-col'>
                 {isLoaded && (
                     <GoogleMap
                     mapContainerStyle={containerStyle}
-                    center={{ lat:33.69383958039442, lng:-117.83629870284751}}
+                    center={mapCenter}
                     zoom={14}
                     >
                     </GoogleMap>

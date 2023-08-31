@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getAuth, signInWithEmailAndPassword, UserCredential, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import app from '../data/firebaseConfig';
-import { useAuthContext } from '../contexts/AuthContext';
+import { useAuthContext, signIn } from '../contexts/AuthContext';
 import { Oval } from 'react-loading-icons'
 
 
@@ -24,7 +24,7 @@ const SignInForm: React.FC = () => {
         const auth = getAuth(app);
 
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signIn(email, password);
             const user = userCredential.user;
             setLoading(true)
             setTimeout(() => {

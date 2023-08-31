@@ -1,10 +1,12 @@
 'use client'
 import { useRouter } from 'next/navigation';
-import { createContext, useContext, useState } from "react"
-import { getAuth, signOut } from 'firebase/auth';
+import { createContext, useContext, useState, useEffect } from "react"
+import { User, getAuth, signOut, setPersistence, browserLocalPersistence, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import app from "../data/firebaseConfig"
 import { Oval } from 'react-loading-icons'
 
+const auth = getAuth();
+setPersistence(auth, browserLocalPersistence);
 
 interface AuthContextType {
     userData: any;
@@ -24,12 +26,25 @@ interface AuthProviderProps {
     children: React.ReactNode;
 }
 
+export function signIn(email: string, password: string) {
+    return signInWithEmailAndPassword(auth, email, password);
+}
+
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-    const [userData, setUserData] = useState(null)
+    const [userData, setUserData] = useState<User | null>(null);
     const [loggedIn, setLoggedIn] = useState(false)
     const [loggedOut, setLoggedOut] = useState(false)
     const [redirect, setRedirect] = useState(false)
     const router = useRouter()
+
+    useEffect(() => {
+        // call the auth observer to set user data and set the call to a variable for cleanup to prevent memory leaks
+        const unsubscribe = onAuthStateChanged(auth, user => {
+            setUserData(user);
+        });
+
+        return unsubscribe;
+    }, []);
 
     async function handleSignOut() {
         const auth = getAuth(app)

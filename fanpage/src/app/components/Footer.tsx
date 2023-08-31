@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Footer() {
     return (
         <div className="w-full bg-[#F4BE69] text-start text-sm py-5 px-3">
@@ -14,7 +16,7 @@ export default function Footer() {
             </p>
 
             <p>
-                For official information about Olive Garden, please visit their official website at <a href="https://www.olivegarden.com" target="_blank" rel="noopener noreferrer" className="font-bold text-green-700">www.olivegarden.com</a>.
+                For official information about Olive Garden, please visit their official website at <Link href="https://www.olivegarden.com" target="_blank" rel="noopener noreferrer" className="font-bold text-green-700">www.olivegarden.com</Link>.
             </p>
         </div >
     )

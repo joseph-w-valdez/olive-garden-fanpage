@@ -5,7 +5,7 @@ import { User, getAuth, signOut, setPersistence, browserLocalPersistence, signIn
 import app from "../data/firebaseConfig"
 import { Oval } from 'react-loading-icons'
 
-const auth = getAuth();
+const auth = getAuth(app);
 setPersistence(auth, browserLocalPersistence);
 
 interface AuthContextType {
@@ -47,8 +47,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }, []);
 
     async function handleSignOut() {
-        const auth = getAuth(app)
-
         try {
             await signOut(auth);
             setLoggedOut(true)

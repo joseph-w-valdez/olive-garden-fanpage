@@ -14,6 +14,7 @@ import RouletteButton from "./RouletteButton";
 
 export default function Spinner() {
   const [items, setItems] = useState<MenuItem[]>([]);
+  const [randomDish, setRandomDish] = useState<MenuItem | null>(null)
   const [lidCovered, setLidCovered] = useState(true);
   const [isWaiting, setIsWaiting] = useState(false);
   const { finalMenuItem, setFinalMenuItem } = useFinalMenuItem();
@@ -34,6 +35,7 @@ export default function Spinner() {
     if (items && items.length > 0) {
       const finalDish = shuffleArray(items).slice(0, 1)[0];
       setFinalMenuItem(finalDish);
+      console.log(finalDish)
     }
   };
 

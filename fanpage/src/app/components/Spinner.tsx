@@ -17,6 +17,7 @@ export default function Spinner() {
   const [items, setItems] = useState<MenuItem[]>([]);
   const [lidCovered, setLidCovered] = useState(true);
   const [isWaiting, setIsWaiting] = useState(false);
+  const [finalItem, setFinalItem] = useState(false);
   const { finalMenuItem, setFinalMenuItem } = useFinalMenuItem();
   const lidRef = useRef<HTMLImageElement>(null);
   const router = useRouter();
@@ -32,9 +33,11 @@ export default function Spinner() {
   };
 
   const pickRandomMenuItem = () => {
+    setFinalItem(false);
     if (items && items.length > 0) {
       const finalDish = shuffleArray(items).slice(0, 1)[0];
       setFinalMenuItem(finalDish);
+      setTimeout(() => setFinalItem(true), 4400)
     }
   };
 
@@ -84,7 +87,7 @@ export default function Spinner() {
         <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} />
       </div>
       <div className="flex justify-end w-full">
-        <h1 className={`w-[40%] xl:w-1/2 text-black absolute ml-6 bottom-[15%] hidden lg:block text-right pr-12 text-5xl xl:text-6xl ${titleAnimation} transition duration-150 ease-linear`}>{finalMenuItem?.name}</h1>
+        {finalItem ? <h1 className={`w-[40%] xl:w-1/2 text-black absolute ml-6 bottom-[15%] hidden lg:block text-right pr-12 text-5xl xl:text-6xl ${titleAnimation} transition duration-150 ease-linear`}>{finalMenuItem?.name}</h1> : undefined}
       </div>
       <RouletteButton waiting={isWaiting} click={handleButtonClick} />
       <div className="absolute text-center bottom-[10%] right-[5rem] text-black hidden lg:block">

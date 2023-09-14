@@ -87,7 +87,7 @@ export default function Spinner() {
         <RouletteBar fadeAnimation={lidCovered ? 'animate-fade-out' : 'animate-fade-in'} items={items} />
       </div>
       <div className="flex justify-end w-full">
-        {finalItem ? <h1 className={`w-[40%] xl:w-1/2 text-black absolute ml-6 bottom-[15%] hidden lg:block text-right pr-12 text-5xl xl:text-6xl ${titleAnimation} transition duration-150 ease-linear`}>{finalMenuItem?.name}</h1> : undefined}
+        {finalItem && <h1 className={`w-[40%] xl:w-1/2 text-black absolute ml-6 bottom-[15%] hidden lg:block text-right pr-12 text-5xl xl:text-6xl ${titleAnimation} transition duration-150 ease-linear`}>{finalMenuItem?.name}</h1>}
       </div>
       <RouletteButton waiting={isWaiting} click={handleButtonClick} />
       <div className="absolute text-center bottom-[10%] right-[5rem] text-black hidden lg:block">

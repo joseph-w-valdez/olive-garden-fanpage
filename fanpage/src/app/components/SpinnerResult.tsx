@@ -11,10 +11,10 @@ export default function Results() {
 
     useEffect(() => {
         if(finalDish !== finalMenuItem) {
-            setIsSpinning(!isSpinning);
+            setIsSpinning(true);
             setFinalDish(finalMenuItem);
             setTimeout(() => {
-                setIsSpinning(true);
+                setIsSpinning(false);
             }, 4400)
         }
     },[finalDish, finalMenuItem]);
@@ -22,7 +22,7 @@ export default function Results() {
     return (
         <div className="pt-20 w-full lg:h-minus-navbar py-8 lg:py-0 bg-[#DDBEA9] text-black flex flex-col justify-center items-center text-left" id="spinner-result">
             <div className="text-left flex flex-wrap px-12 w-full md:w-1/2 xl:w-1/3 landscape-sm:w-full">
-                {(finalMenuItem && isSpinning) && (
+                {(finalMenuItem && !isSpinning) && (
                     <div className="flex flex-col landscape-sm:flex-row justify-center landscape-sm:justify-between items-center">
                         <div className="w-full landscape-sm:w-1/2 landscape-sm:max-w-[50vw] flex justify-center">
                             <Image

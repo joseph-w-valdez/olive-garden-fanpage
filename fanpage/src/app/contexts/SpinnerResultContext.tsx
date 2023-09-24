@@ -8,7 +8,7 @@ interface FinalMenuItemContextType {
     finalMenuItem: MenuItem | null;
     setFinalMenuItem: React.Dispatch<React.SetStateAction<MenuItem | null>>;
     isSpinning: boolean;
-    setIsSpinning: React.Dispatch<React.SetStateAction<boolean>>;
+    setIsSpinning: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 
 const FinalMenuItemContext = createContext<FinalMenuItemContextType | undefined>(undefined);
@@ -27,7 +27,7 @@ interface FinalMenuItemProviderProps {
 
 export const FinalMenuItemProvider: React.FC<FinalMenuItemProviderProps> = ({ children }) => {
     const [finalMenuItem, setFinalMenuItem] = useState<MenuItem | null>(null);
-    const [isSpinning, setIsSpinning] = useState<boolean>(false);
+    const [isSpinning, setIsSpinning] = useState<boolean | undefined>(undefined);
 
     return (
         <FinalMenuItemContext.Provider value={{ finalMenuItem, setFinalMenuItem, isSpinning, setIsSpinning }}>

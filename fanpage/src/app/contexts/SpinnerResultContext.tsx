@@ -7,7 +7,7 @@ import { Bars } from 'react-loading-icons'
 interface FinalMenuItemContextType {
     finalMenuItem: MenuItem | null;
     setFinalMenuItem: React.Dispatch<React.SetStateAction<MenuItem | null>>;
-    isSpinning: boolean;
+    isSpinning: boolean | undefined;
     setIsSpinning: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }
 

@@ -12,13 +12,29 @@ const containerStyle = {
 };
 
 async function getLatLonforCity(city: string) {
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-        city + ', USA'
-    )}&key=${googleApiKey}`;
+    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(city + ', USA')}&key=${googleApiKey}`;
     const geocodeResponse = await fetch(geocodeUrl);
     const geocodeData = await geocodeResponse.json();
     const { lat, lng } = geocodeData.results[0].geometry.location;
-    return { lon: lng, lat};
+    return { lat, lng };
+}
+
+async function getNearbyPlaces(lat: number, lng: number) {
+    const radius = 1000;
+    const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Olive+Garden&inputtype=textquery&locationbias=circle:${radius}@${lat},${lng}&key=${googleApiKey}`;
+    console.log(url)
+    try {
+        const nearbyPlacesResponse = await fetch(url);
+        if (!nearbyPlacesResponse.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        const nearbyPlacesData = await nearbyPlacesResponse.json();
+        console.log(nearbyPlacesData);
+        return nearbyPlacesData;
+    } catch (error) {
+        console.error('Error fetching nearby places:', error);
+        throw error; // Rethrow the error to handle it at a higher level
+    }
 }
 
 export default function Locator() {
@@ -35,33 +51,28 @@ export default function Locator() {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(!searchText) {
-            return console.log('No search text?')
+        if (!searchText) {
+          return console.log('No search text?');
         }
         setIsLoading(true);
         try {
-            const locationData = await getLatLonforCity(searchText);
-            console.log(locationData);
-            if (isLoaded) {
-                setMapCenter({
-                    lat: locationData.lat,
-                    lng: locationData.lon,
-                })
-            }
+          const locationData = await getLatLonforCity(searchText);
+          setMapCenter({ lat: locationData.lat, lng: locationData.lng });
+          const nearbyLocations = await getNearbyPlaces(mapCenter.lat, mapCenter.lng); // Pass updated coordinates
+          console.log('nearby locations', nearbyLocations);
         } catch (error) {
-            console.error('Error fetching location data:', error);
+          console.error('Error fetching location data:', error);
         } finally {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 2000);
-            setSearchText('');
-            if (inputRef.current) {
-                inputRef.current.focus();
-            }
+          setSearchText('');
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 2000);
+          if (inputRef.current) {
+            inputRef.current.focus();
+          }
         }
-        if (inputRef.current === null) return
         console.log('Submitted:', searchText);
-    };
+      };      
 
     return (
         <>
@@ -90,6 +101,7 @@ export default function Locator() {
                     center={mapCenter}
                     zoom={14}
                     >
+
                     </GoogleMap>
                 )}
             </div>
